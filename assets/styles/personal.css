@@ -1,0 +1,100 @@
+@font-face {
+  font-family: metropolis-medium;
+  src: url("../fonts/Metropolis/Metropolis-Medium.otf");
+  font-display: fallback;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  height: 100vh;
+  font-family: metropolis-medium;
+  overflow: hidden; 
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.441);
+    border-radius: 50px;
+  }
+
+.content {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.card-infos {
+  position: relative;
+  top:90px;
+  width: 50%;
+  height: 80%;
+  -webkit-box-pack: justify !important;
+  -webkit-box-direction: normal !important;
+  -webkit-box-orient: vertical !important;
+  min-height: 126px !important;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px !important;
+  /*  margin: 1rem 0px !important;*/
+  padding: 0.5rem 2rem !important;
+  
+  text-decoration: none !important;
+  margin: 0 auto;
+}
+
+.form-infos {
+  display: flex;
+  flex-direction: row;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  width: 86%;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+small {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+  position: relative;
+  padding: 0 4px;
+  top: -0.7rem;
+}
+
+.form-infos a {
+  display: flex;
+  text-decoration: underline;
+  position: relative;
+  font-size: 0.75rem;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.form-infos a:hover {
+  cursor: pointer;
+}
+
+.col {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-chevron-left {
+  margin: 8px 0;
+}
+
+.fa-chevron-left:hover {
+  cursor: pointer;
+}

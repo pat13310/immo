@@ -1,0 +1,58 @@
+
+
+@font-face {
+    font-family: metropolis-medium;
+    src: url("../fonts/Metropolis/Metropolis-Medium.otf");
+    font-display: fallback;
+  }
+  
+  html,
+  body {
+    position: relative;
+    height: 100vh;    
+    font-family: metropolis-medium;
+  }
+  
+.card-dashboard {
+    -webkit-box-pack: justify !important;
+    -webkit-box-direction: normal !important;
+    -webkit-box-orient: vertical !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;    
+    min-height: 126px !important;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px !important;
+    margin: 8px 0px !important;
+    padding: 0.5rem 2rem!important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+}
+
+.card-dashboard:hover{
+    box-shadow: rgba(0, 0, 0, 0.32) 0px 6px 16px !important;
+    cursor: pointer;
+}
+
+.grid-dashboard{    
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px,1fr));
+    gap:10px;    
+    padding: 0 20%;
+}
+
+.card-dashboard h3{
+    margin: 0;
+    font-size: 1rem;
+}
+
+p{
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.container-dashboard{
+    width:100%;
+    display: flex;
+    align-items: center;
+   
+}

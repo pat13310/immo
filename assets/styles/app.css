@@ -1,3 +1,4 @@
 @import '~bootswatch/dist/sandstone/bootstrap.min.css';
-@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import 'media.css';
 

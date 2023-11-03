@@ -1,0 +1,203 @@
+.navbar {
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  border-bottom: 1px solid rgb(184, 184, 184);
+  background: white;
+  position: fixed;
+  padding: 0 1rem;
+  align-items: center;
+  gap: 3rem;
+}
+
+.menu-login {
+  display: flex;
+  flex-direction: row;
+  visibility: visible;
+  position: relative;
+  width: 120px;
+  top: 0px;
+  right: 12px;
+  border-radius: 26px;
+  border: 1px solid #c6c4c45e;
+  padding: 4px;
+  background: white;
+  font-family: inherit;
+  font-size: 1rem;
+  align-items: end;
+  z-index:9;
+}
+
+.menu-login:hover {
+  box-shadow: 1px 1px 4px #0000005e;
+  cursor: pointer;
+}
+
+.menu-login a {
+  padding: 7px 12px;
+  margin: 8px 5px;
+  display: block;
+  text-decoration: none;
+  color: #737373;
+}
+.menu-login .first {
+  color: #252525;
+}
+
+.menu-login a:hover {
+  background: #b8b8b814;
+  cursor: pointer;
+  z-index: 6;
+}
+
+.menu-login img {
+  border: 1px solid rgb(71, 71, 71);
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+.menu-login .hamburger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+}
+
+.menu-right {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.btn-addlocal {
+  display: flex;
+  align-items: center;
+  width: auto;
+  padding: 14px 12px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 1rem;
+}
+
+.btn-addlocal a {
+  text-align: center;
+  text-decoration: none;
+}
+.btn-addlocal:hover {
+  background: rgba(238, 237, 237, 0.525);
+}
+
+
+.btn-local{
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.btn-local:hover{
+    background: rgba(238, 237, 237, 0.525);
+    cursor: pointer;
+}
+
+
+.footer{
+  display: flex;
+  margin: 0;
+  position: fixed;
+  left: 0;
+  padding: 40px 0;
+  width: 100%;
+  bottom: 0;
+  height: 85px;
+  background: #fff;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.5;
+}
+
+.footer .line1{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .line2{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.footer .social{
+    
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer .webline{
+    width: 100%;
+    display: flex;    
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainmenu {
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  border-bottom: 1px solid rgb(184, 184, 184);
+  background: white;
+  position: fixed;
+  padding: 0 1rem;
+  align-items: center;
+  gap: 3rem;
+  z-index: 5;
+}
+
+/* menu droit pour connexion inscription */
+.menu-log {  
+  visibility:visible;
+  position: fixed;
+  top: 70px;
+  right: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px #0000005e;
+  padding: 0;
+  z-index: 9;
+  background: white;
+  font-family: inherit;
+  font-size: 1rem;
+  z-index:995;
+}
+
+
+.menu-log a {
+  padding: 14px 12px;
+  margin: 8px 5px;
+  display: block;
+  text-decoration: none;
+  color: #737373;
+}
+.menu-log .first {
+  color: #252525;
+}
+
+.menu-log a:hover {
+  background: #b8b8b814;
+  cursor: pointer;
+}

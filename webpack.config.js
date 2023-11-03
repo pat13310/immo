@@ -20,8 +20,12 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
+    
     .addEntry('app', './assets/app.js')
-
+    //.addEntry('panel', './assets/js/panel.js')
+    //.addEntry('bootstrap', '.bootstrap/dist/js/bootstrap.js')
+    .addStyleEntry('main', './assets/styles/main.css')  // Ajoutez cette ligne pour inclure votre fichier CSS
+    .addStyleEntry('media', './assets/styles/media.css')  // Ajoutez cette ligne pour inclure votre fichier CSS
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
@@ -51,6 +55,19 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.23';
+    })
+
+    .copyFiles({
+        from:'./assets/images',
+        to:'images/[path][name].[ext]'
+    })
+    .copyFiles({
+        from: './assets/fonts', // Répertoire source des polices
+        to: 'fonts/[path][name].[ext]', // Répertoire de destination et modèle de nom de fichier
+    })
+    .copyFiles({
+        from: './assets/js', // Répertoire source des polices
+        to: 'js/[path][name].[ext]', // Répertoire de destination et modèle de nom de fichier
     })
 
     // enables Sass/SCSS support

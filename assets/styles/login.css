@@ -1,0 +1,304 @@
+:root {
+  --color1: black;
+  --color2: rgba(97, 129, 234, 0.72);
+  --color3: white;
+  --color4: #0d47a1;
+  --color5: #e1f5fe;
+  --red: #e41d56;
+  --red2: #a40935;
+}
+
+@font-face {
+  font-family: metropolis-medium;
+  src: url("../fonts/Metropolis/Metropolis-Medium.otf");
+  font-display: fallback;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: metropolis-medium, serif;
+  color: var(--color1);
+  padding-bottom: 200px;
+}
+
+.card-login {
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid var(--color2);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background: var(--color3);
+  width: 500px;
+  max-width: 100%;
+  z-index: 999;
+  
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  font-weight: 600;
+
+  border-bottom: 1px solid rgba(211, 211, 211, 0.57);
+  color: var(--color1);
+}
+
+.form {
+  padding: 15px 40px;
+  padding-top: 0;
+}
+.form2 {
+  padding: 15px 40px;
+}
+
+.form-control {
+  position: relative;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+.form-control input {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid var(--color1);
+  color: #41095b;
+  padding: 10px 6px;
+  font-family: inherit;
+  outline-color: var(--color2);
+}
+
+.form-control.success input {
+  border-color: #2ecc71;
+}
+
+.form-control.error input {
+  border-color: #e74c3c;
+}
+
+.form-control.success select {
+  outline: #2ecc71;
+}
+
+.form-control.error select {
+  outline: #e74c3c;
+}
+
+.form-control label {
+  width: auto;
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.form-control.success i.fa-check-circle {
+  color: #2ecc71;
+  visibility: visible;
+  top: 10px;
+}
+
+.form-control.error i.fa-exclamation-circle {
+  color: #e74c3c;
+  visibility: visible;
+  top: 10px;
+}
+
+.form-control small {
+  color: #e74c3c;
+  visibility: hidden;
+  font-size: 0.6rem;
+}
+
+.form-control.error small {
+  position: relative;
+  top: -4px;
+  visibility: visible;
+}
+
+.container-social{
+  display: block;
+}
+
+.container-social a,button {
+  display: block;
+    text-align: center;
+    padding: 0.9rem 16px;
+    border: 1px solid var(--color2);
+    border-radius: 5px;
+    background: whitesmoke;
+    margin-top: 10px;
+    font-family: inherit;
+    width: 100%;
+    font-size: 0.9rem;
+    color: var(--color1);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.container-social a:hover,button:hover {
+  cursor: pointer;
+  background: lightgray;
+}
+
+.button-red {
+  width: 100%;
+  background: var(--red);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.button-red:hover {
+  width: 100%;
+  background: var(--red2);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.container-social a> i.fa-google {
+  position: absolute;
+  top:14px;
+  left: -70%;
+  color: black;
+  visibility: visible;
+}
+
+i.fa-facebook {
+  position: absolute;
+  top:68px;
+  left: -70%;
+  color: black;
+  visibility: visible;
+}
+
+i {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  visibility: hidden;
+}
+
+.container-barre {
+  width: 100% !important;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+}
+
+.barre {
+  -webkit-box-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  margin: 16px 0px !important;
+}
+
+.barre::before {
+  content: "" !important;
+  display: block !important;
+  width: 100% !important;
+  height: 1px !important;
+  background-color: rgb(221, 221, 221) !important;
+  margin-right: 16px !important;
+}
+
+.barre::after {
+  content: "" !important;
+  display: block !important;
+  width: 100% !important;
+  height: 1px !important;
+  background-color: rgb(221, 221, 221) !important;
+  margin-left: 16px !important;
+}
+
+.form-control input::placeholder {
+  font-weight: normal;
+  opacity: 0.5;
+  font-family: inherit;
+  color: var(--color1);
+}
+
+.card .close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 10px;
+  top: 18px;
+  padding: 0.3rem 0.75rem;
+  width: 10px;
+}
+
+.card .close:hover {
+  background-color: rgba(211, 211, 211, 0.38);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+select {
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+}
+
+option {
+  padding: 0.5rem 1rem;
+}
+
+.small2 {
+  position: relative;
+  top: -8px;
+  color: gray;
+  font-size: 0.7rem;
+  line-height: 1.42rem;
+}
+.small2 a {
+  text-decoration: underline;
+  color: #2b2be7;
+}
+.small2 a:hover {
+  text-decoration: underline;
+  color: #1616e7;
+  cursor: pointer;
+}
+.form-control input:read-only {
+  background: whitesmoke;
+  color: rgba(0, 0, 0, 0.41);
+}
+
+.form-control label i {
+  position: relative;
+  top: 0;
+  left: 5px;
+  color: black;
+  font-weight: 500;
+  visibility: visible;
+}
+
+.container-social {
+  position: relative;
+  padding: 20px 40px;
+  padding-top:0 ;
+}
+
+

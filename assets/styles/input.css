@@ -1,0 +1,71 @@
+:root {
+    --color1: black;
+    --color2: rgba(97, 129, 234, 0.72);
+    --color3: white;
+    --color4: #0d47a1;
+    --color5: #e1f5fe;
+    --red: #e41d56;
+    --red2: #a40935;
+  }
+  
+
+.form-control {
+    position: relative;
+    
+    width: 100%;
+  }
+  
+  .form-control input {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid var(--color1);
+    color: #41095b;
+    padding: 1rem 6px;
+    font-family: inherit;
+    outline-color: var(--color2);
+  }
+  
+  .form-control.success input {
+    border-color: #2ecc71;
+  }
+  
+  .form-control.error input {
+    border-color: #e74c3c;
+  }
+  
+  .form-control label {
+    width: auto;
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .form-control.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+    top: 10px;
+  }
+  
+  .form-control.error i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+    top: 10px;
+  }
+  
+  .form-control small {
+    color: #e74c3c;
+    visibility: hidden;
+    font-size: 0.6rem;
+  }
+  
+  .form-control.error small {
+    position: relative;
+    top: -4px;
+    visibility: visible;
+  }
+  
