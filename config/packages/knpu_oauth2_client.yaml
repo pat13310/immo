@@ -1,0 +1,9 @@
+knpu_oauth2_client:
+    clients:
+        google:
+            type: google
+            client_id: '%env(resolve:GOOGLE_ID)%'
+            client_secret: '%env(resolve:GOOGLE_SECRET)%'
+            redirect_route: google.check
+            redirect_params: {}
+        # configure your clients as described here: https://github.com/knpuniversity/oauth2-client-bundle#configuration

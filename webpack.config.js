@@ -26,9 +26,9 @@ Encore
     //.addEntry('bootstrap', '.bootstrap/dist/js/bootstrap.js')
     .addStyleEntry('main', './assets/styles/main.css')  // Ajoutez cette ligne pour inclure votre fichier CSS
     .addStyleEntry('media', './assets/styles/media.css')  // Ajoutez cette ligne pour inclure votre fichier CSS
+    .addStyleEntry('login', './assets/styles/login.css')  // Ajoutez cette ligne pour inclure votre fichier CSS
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
-
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
@@ -69,9 +69,13 @@ Encore
         from: './assets/js', // Répertoire source des polices
         to: 'js/[path][name].[ext]', // Répertoire de destination et modèle de nom de fichier
     })
+    .copyFiles({
+        from: './assets/data', // Répertoire source des polices
+        to: 'data/[path][name].json', // Répertoire de destination et modèle de nom de fichier
+    })
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

@@ -1,13 +1,14 @@
 {% include('base.html.twig')%}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-	<link rel="stylesheet" href="<?= base_url() . "/css/login.css" ?>">
-	<script defer type="text/javascript" src="<?= base_url() . "js/navbar.js" ?>"></script>
+	{{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('main') }}
+	{{ encore_entry_link_tags('media') }}
+	{{ encore_entry_link_tags('login') }}
+	<script defer type="text/javascript" src="{{asset('build/js/navbar.js')}}"></script>
 {% endblock %}
 
 {% block body %}
-
 	<div class="black-screen">
 		<div class="card-login">
 			<div class="close">
@@ -40,9 +41,8 @@
 {% endblock %}
 
 {% block js %}
-	<script type="text/javascript" src="<?= base_url() . "js/common.js" ?>"></script>
-
-	<script type="text/javascript" src="<?= base_url() . "js/validate.js" ?>"></script>
+	<script type="text/javascript" src="{{asset("build/js/common.js")}}"></script>
+	<script type="text/javascript" src="{{asset('build/js/validate.js')}}"></script>
 	<script>
 		hideSlides();
 	</script>

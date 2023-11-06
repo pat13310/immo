@@ -1,0 +1,34 @@
+
+@import '~bootswatch/dist/sandstone/variables';
+@import '~bootswatch/dist/sandstone/bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import 'media.scss';
+
+.btn-danger {
+    background:linear-gradient(#E61E4F,#fe365b,#E61E4F) ; // Couleur de fond personnalisée pour les boutons de danger
+    border-color: #820404; // Couleur de la bordure
+    color: #fff; // Couleur du texte
+    &:hover {
+        background: linear-gradient(#b71840,#fb284f,#b71840); // Couleur au survol des alertes de danger
+        border-color: #820404; // Couleur de la bordure au survol
+        // Autres styles au survol si nécessaire
+    }
+}
+
+.btn-light {
+    background:linear-gradient(#f8f5f0,#fff,#f8f5f0) ; // Couleur de fond personnalisée pour les boutons de danger
+    border-color: #043682; // Couleur de la bordure
+    &:hover {
+        background:linear-gradient(#f1cd8e,#f8f5f0,#f1cd8e) ; // Couleur au survol des alertes de danger
+        border-color: #043682; // Couleur de la bordure au survol
+        // Autres styles au survol si nécessaire
+    }
+}
+
+// Personnalisation des couleurs des alertes de danger
+.alert-danger {
+    background: linear-gradient(#f55f5f, #f38b8b,#f55f5f);
+    border-color: #480404;
+    color: #fff;
+    text-shadow: 1px 1px 2px #700404;
+}
