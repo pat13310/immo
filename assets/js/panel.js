@@ -109,18 +109,41 @@ async function fetchCountry() {
     });
 }
 
-async function fetchIPAddress(){
-  fetch("https://api.ipify.org?format=json")
-    .then(response => response.json())  
-    .then((data) => {   
-      const userIP=data.ip;     
-      return userIP;
-    })
-    .catch((error) => {
-      console.error(
-        "Erreur lors de la récupération des données de géolocalisation par adresse IP : " +
-          error
-      );
-    });
+async function fetchIPAddress() {
+  return new Promise((resolve, reject) => {
+    fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => {
+        const userIP = data.ip;
+        resolve(userIP);
+      })
+      .catch((error) => {
+        console.error(
+          "Erreur lors de la récupération des données de géolocalisation par adresse IP : " +
+            error
+        );
+      });
+  });
+}
 
+async function getCountryFromIP(ip) {
+  return new Promise((resolve, reject) => {
+    fetch(`https://ipinfo.io/json?token=98406dd2b8e2b5`)
+      .then((response) => response.json())
+      .then((data) => resolve(data.country))
+      .catch((error) => {
+        reject(error);        
+      });
+  });
+}
+
+async function loadJson(file) {
+  return new Promise((resolve, reject) => {
+    fetch(file)
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch((error) => {
+        reject(error);        
+      });
+  });
 }
