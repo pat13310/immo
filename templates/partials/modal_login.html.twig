@@ -8,19 +8,19 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form id="form_login" name="form_login" method="post" onsubmit="return onValidateLogin() " action="/login">
+				<form id="form_login" name="form_login" method="post"  action="/login">
 					<h4>Bienvenue sur Immo</h4>
 					{% if error is defined %}
 						{% if error.messageKey is defined %}
 							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 						{% endif %}
 					{% endif %}
-					<div id="pan-mail">
+					<div id="pan-mail" >
 						<input class="mt-3 mb-3 form-control" id="inputEmail" name="email" type="text" placeholder="Adresse e-mail" autofocus/>
 						<input type="password" name="password" id="inputPassword" class="form-control mb-3" autocomplete="current-password" placeholder="Mot de passe" />
 					</div>
-					<div id="pan-tel" class="collapse">
-						<select class="form-control" id="countrySelect"></select>
+					<div id="pan-tel" class="collapse" >
+						<select class="mt-3 form-control" id="countrySelect"></select>
 						<input class="mt-3 mb-3 form-control" id="inputPhone" name="phone" type="text" placeholder="Numéro de téléphone" />
 					</div>
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

@@ -12,8 +12,8 @@
 	{{include("partials/modal_login.html.twig") }}
 	<header>
 		<div class="menu-log collapse">
-			<a class="first" href="#">Inscription</a>
-			<a class="link-login" href="#">Connexion</a>
+			<a class="first" href="#" id="signin">Inscription</a>
+			<a class="link-login" href="#" id="connect">Connexion</a>
 			<a href="/property/add">Mettre son commerce sur Immo</a>
 			<hr>
 			<a href="/help">Aide</a>
@@ -92,7 +92,8 @@ let myLogin = new bootstrap.Modal(document.getElementById('modal-login'));
 
 let btnLog = document.querySelector('.log');
 let menuLog = document.querySelector('.menu-log');
-let linkLog = document.querySelector('.link-login');
+let signinLog = document.querySelector('#signin');
+let linkLog = document.querySelector('#connect');
 
 const _mail = document.querySelector("#mail");
 const _phone = document.querySelector("#phone");
@@ -100,12 +101,26 @@ const _pan_tel = document.querySelector("#pan-tel");
 const _pan_mail = document.querySelector("#pan-mail");
 
 btnLog.addEventListener("click", () => {
-menuLog.classList.toggle('collapse');
+	menuLog.classList.toggle('collapse');
 });
 
 linkLog.addEventListener("click", () => {
-myLogin.show();
-});{% if login == "show" %}myLogin.show();{% endif %}selectPanel(panels_sel);
+	signinLog.classList.add('first');
+	linkLog.classList.remove('first');
+	myLogin.show();
+});
+
+signinLog.addEventListener("click", () => {
+	linkLog.classList.add('first');
+	signinLog.classList.remove('first');
+	myLogin.show();
+});
+
+{% if login == "show" %}
+	myLogin.show();
+{% endif %}
+
+selectPanel(panels_sel);
 selectPanel(panels_fav, "selected");
 selectPanel2(panels_dev);
 
@@ -126,38 +141,13 @@ anywhere.addEventListener("click", () => {
 console.log("You clicked");
 });
 
+let pays="";
 
-fetchIPAddress().then((data)=> {
-	getCountryFromIP(data).then((country)=>{
-		console.log(country);
-})
+getCountry().then((country) => {
+	//console.log(country.name);
+	loadCountryToSelect(country.name);
 });
 
 
-
-fetchDataPhone('{{ asset('build/data/phone.json') }}').then((data) => {
-if (data) {
-// Ici, vous pouvez utiliser les données JSON récupérées
-// Par exemple, vous pouvez créer et remplir le select avec ces données
-const selectElement = document.getElementById("countrySelect");
-
-data.forEach((country) => {
-const option = document.createElement("option");
-option.value = country.indicatif_telephonique;
-option.text = `${
-country.pays
-} +(${
-country.indicatif
-})`;
-selectElement.appendChild(option);
-});
-}
-});
-
-let arr_country = [];
-
-loadJson('{{ asset('build/data/country.json') }}').then((data) => {
-	arr_country=data;
-});
 	</script>
 {% endblock %}

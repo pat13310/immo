@@ -60,18 +60,20 @@ function onAction(action) {
       break;
 
     case "tel":
+      _phone.classList = "collapse";  
       _mail.classList = "ms-0 row d-flex btn btn-light w-100 mb-3 py-3";
-      _phone.classList = "collapse";
-      _pan_tel.classList = "collapse";
+      
       _pan_mail.classList = "";
+      _pan_tel.classList = "collapse";
       form_login.method_validate.value = "mail";
       break;
 
     case "mail":
       _phone.classList = "ms-0 row d-flex btn btn-light w-100 mb-3 py-3";
       _mail.classList = "collapse";
-      _pan_tel.classList = "";
+
       _pan_mail.classList = "collapse";
+      _pan_tel.classList = "";
       form_login.method_validate.value = "phone";
 
       break;
@@ -132,7 +134,7 @@ async function getCountryFromIP(ip) {
       .then((response) => response.json())
       .then((data) => resolve(data.country))
       .catch((error) => {
-        reject(error);        
+        reject(error);
       });
   });
 }
@@ -143,7 +145,38 @@ async function loadJson(file) {
       .then((response) => response.json())
       .then((data) => resolve(data))
       .catch((error) => {
-        reject(error);        
+        reject(error);
       });
   });
+}
+
+function loadCountryToSelect(selectedCountry) {
+  fetchDataPhone("build/data/country.json").then((data) => {
+    if (data) {
+      // Ici, vous pouvez utiliser les données JSON récupérées
+      // Par exemple, vous pouvez créer et remplir le select avec ces données
+      const selectElement = document.getElementById("countrySelect");
+
+      data.forEach((country) => {
+        const option = document.createElement("option");
+        option.value = country.indicatif;
+        if (selectedCountry == country.name){
+          option.text = `${country.name} +(${country.indicatif}) `;
+          option.setAttribute("selected", true);
+        }
+        else option.text = `${country.name} +(${country.indicatif})`;
+        selectElement.appendChild(option);
+      });
+    }
+  });
+}
+
+async function getCountry() {
+  let countries = [];
+
+  const ip = await fetchIPAddress();
+  const code = await getCountryFromIP(ip);
+  countries = await loadJson("build/data/country.json");
+  let val = countries.find((country) => country.code === code);
+  return val;
 }
