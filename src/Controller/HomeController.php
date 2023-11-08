@@ -11,11 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    public function __construct(
-        private LangagesRepository $langagesRepository,
-        private DeviseRepository $deviseRepository
-    ) {
-    }
+    use \App\Entity\Trait\LangagesAndDevisesTrait;    
 
     #[Route('/', name: 'app.home')]
     public function index(Request $request): Response

@@ -11,13 +11,7 @@
 	{{include("partials/modal_langages.html.twig") }}
 	{{include("partials/modal_login.html.twig") }}
 	<header>
-		<div class="menu-log collapse">
-			<a class="first" href="#" id="signin">Inscription</a>
-			<a class="link-login" href="#" id="connect">Connexion</a>
-			<a href="/property/add">Mettre son commerce sur Immo</a>
-			<hr>
-			<a href="/help">Aide</a>
-		</div>
+
 		<div class="menu-header">
 			<div class="logo"></div>
 			<div class="spacer"></div>
@@ -47,6 +41,13 @@
 				&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewbox="-4 -3 36 36" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 100%; width: 100%; fill: currentcolor;">
 					<path d="M16 .7C7.56.7.7 7.56.7 16S7.56 31.3 16 31.3 31.3 24.44 31.3 16 24.44.7 16 .7zm0 28c-4.02 0-7.6-1.88-9.93-4.81a12.43 12.43 0 0 1 6.45-4.4A6.5 6.5 0 0 1 9.5 14a6.5 6.5 0 0 1 13 0 6.51 6.51 0 0 1-3.02 5.5 12.42 12.42 0 0 1 6.45 4.4A12.67 12.67 0 0 1 16 28.7z"></path>
 				</svg>
+				<div class="menu-log collapse">
+					<a class="first link-login" href="#" id="connect">Connexion</a>
+					<a href="#" id="signin">Inscription</a>
+					<a href="/property/add">Mettre son commerce sur Immo</a>
+					<hr>
+					<a href="/help">Aide</a>
+				</div>
 			</button>
 		</div>
 	</div>
@@ -81,36 +82,39 @@
 		<div id="cards"></div>
 	</main>
 {% endblock %}
+
 {% block js %}
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<script src="{{asset('/build/js/panel.js')}}"></script>
 	<script src="{{asset('/build/js/card.js')}}"></script>
+	<script src="{{asset('/build/js/common.js')}}"></script>
 	<script>
 
 		let myModal = new bootstrap.Modal(document.getElementById('myModal'));
-let myLogin = new bootstrap.Modal(document.getElementById('modal-login'));
+		let myLogin = new bootstrap.Modal(document.getElementById('modal-login'));
 
-let btnLog = document.querySelector('.log');
-let menuLog = document.querySelector('.menu-log');
-let signinLog = document.querySelector('#signin');
-let linkLog = document.querySelector('#connect');
+		let btnLog = document.querySelector('.log');
+		let menuLog = document.querySelector('.menu-log');
+		let signinLog = document.querySelector('#signin');
+		let linkLog = document.querySelector('#connect');
 
-const _mail = document.querySelector("#mail");
-const _phone = document.querySelector("#phone");
-const _pan_tel = document.querySelector("#pan-tel");
-const _pan_mail = document.querySelector("#pan-mail");
+		const _mail = document.querySelector("#mail");
+		const _phone = document.querySelector("#phone");
+		const _pan_tel = document.querySelector("#pan-tel");
+		const _pan_mail = document.querySelector("#pan-mail");
 
 btnLog.addEventListener("click", () => {
 	menuLog.classList.toggle('collapse');
+	menuLog.classList.toggle('active');
 });
 
-linkLog.addEventListener("click", () => {
+signinLog.addEventListener("click", () => {
 	signinLog.classList.add('first');
 	linkLog.classList.remove('first');
 	myLogin.show();
 });
 
-signinLog.addEventListener("click", () => {
+linkLog.addEventListener("click", () => {
 	linkLog.classList.add('first');
 	signinLog.classList.remove('first');
 	myLogin.show();
@@ -125,11 +129,11 @@ selectPanel(panels_fav, "selected");
 selectPanel2(panels_dev);
 
 cards.forEach((card) => {
-new CreateCard(card);
+	new CreateCard(card);
 });
 
 slides.forEach((card) => {
-new CreateCardSlide(card);
+	new CreateCardSlide(card);
 });
 
 
@@ -141,13 +145,12 @@ anywhere.addEventListener("click", () => {
 console.log("You clicked");
 });
 
-let pays="";
+let pays = "";
 
-getCountry().then((country) => {
-	//console.log(country.name);
-	loadCountryToSelect(country.name);
+getCountry().then((country) => { // console.log(country.name);
+loadCountryToSelect(country.name);
 });
 
-
+alertVanish();
 	</script>
 {% endblock %}

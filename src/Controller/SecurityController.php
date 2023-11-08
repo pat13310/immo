@@ -2,28 +2,23 @@
 
 namespace App\Controller;
 
-use App\Repository\DeviseRepository;
-use App\Repository\LangagesRepository;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    public function __construct(
-        private LangagesRepository $langagesRepository,
-        private DeviseRepository $deviseRepository
-    ){}     
+    use \App\Entity\Trait\LangagesAndDevisesTrait;    
 
     #[Route(path: '/login', name: 'app.login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
     {
         $langages = $this->langagesRepository->findAllLangages();
         $favorites = $this->langagesRepository->findFavorites();
         $devises = $this->deviseRepository->findAll();
-    
+
         if ($this->getUser()) {
             return $this->redirectToRoute('app.home');
         }
@@ -32,14 +27,13 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        /* if ($error === null) {            
-            return $this->redirectToRoute('app.home', ['login' => 'show']);
-        } */
+             
+
         return $this->render('home/index.html.twig', [
             'langages' => $langages,
             'favorites' => $favorites,
             'devises' => $devises,
-            'login'=>'show',
+            'login' => 'show',
             'lastUsername' => $lastUsername,
             'error' => $error
         ]);

@@ -16,7 +16,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class LoginAuthenticator extends AbstractLoginFormAuthenticator
+class PhoneAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
@@ -28,8 +28,8 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        $email = $request->request->get('email', '');
-        dd($email);
+        $phone = $request->request->get('phone', '');
+        dd($phone);
 
         if ($request->get('method_validate') === 'mail') {
             $mail = $request->get('email');
@@ -41,10 +41,10 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
             echo ($phone);
         }
 
-        $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
+        $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $phone);
 
         return new Passport(
-            new UserBadge($email),
+            new UserBadge($phone),
             new PasswordCredentials($request->request->get('password', '')),
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
