@@ -53,30 +53,32 @@ function findLangageSelected() {
 }
 
 function onAction(action) {
+  showInput(action);
   switch (action) {
     case "facebook":
       break;
     case "google":
       break;
-
-    case "tel":
-      _phone.classList = "collapse";  
-      _mail.classList = "ms-0 row d-flex btn btn-light w-100 mb-3 py-3";
-      
-      _pan_mail.classList = "";
-      _pan_tel.classList = "collapse";
-      form_login.method_validate.value = "mail";
-      break;
-
-    case "mail":
-      _phone.classList = "ms-0 row d-flex btn btn-light w-100 mb-3 py-3";
-      _mail.classList = "collapse";
-
-      _pan_mail.classList = "collapse";
-      _pan_tel.classList = "";
-      form_login.method_validate.value = "phone";
-
-      break;
+    case "init":
   }
 }
 
+function showInput(action) {
+  switch (action) {
+    case "tel":     
+      btn_mail.classList = "ms-0 row d-flex btn btn-light w-100 mb-3 py-3";
+      btn_phone.classList = "collapse";
+      input_mail.classList = "collapse";
+      input_tel.classList = "";
+      form_login.method_validate.value = "tel";
+      break;
+
+    case "mail":
+      btn_mail.classList = "collapse";
+      btn_phone.classList = "ms-0 row d-flex btn btn-light w-100 mb-3 py-3";
+      input_mail.classList = "";
+      input_tel.classList = "collapse";
+      form_login.method_validate.value = "mail";
+      break;
+  }
+}

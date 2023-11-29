@@ -1,0 +1,22 @@
+{% if app.user %}
+<div class="menu-log collapse">
+	<a href="/message/list">Messages</a>
+	<a href="/rent/list">Locations</a>
+	<a href="/favorites/list">Favoris</a>
+    <hr>
+	<a href="/property/add">Mettre son commerce sur Immo</a>
+	<a href="/refer">Parrainer un hôte</a>
+	<a href="/account/dashboard">Compte</a>
+	<hr>
+	<a href="/help">Centre d'aide</a>
+	<a class="first link-login" href="/logout" id="disconnect">Déconnexion</a>
+</div>
+{% else %}
+<div class="menu-log collapse">
+	<a class="first link-login" href="#" id="connect">Connexion</a>
+	<a href="#" id="signin">Inscription</a>
+	<a href="/property/add">Mettre son commerce sur Immo</a>
+	<hr>
+	<a href="/help">Aide</a>
+</div>
+{% endblock %}

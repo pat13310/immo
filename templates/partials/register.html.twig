@@ -1,0 +1,49 @@
+<div class="row ">
+	{{ form_start(registrationForm)}}
+	<div class='col-md-12'>
+		<div class="form-floating">
+			{{ form_widget(registrationForm.name) }}
+			{{ form_errors(registrationForm.name) }}
+			{{ form_label(registrationForm.name) }}
+		</div>
+	</div>
+	<div class='col-md-12'>
+		<div class="form-floating">
+			{{ form_widget(registrationForm.firstName) }}
+			{{ form_errors(registrationForm.firstName) }}
+			{{ form_label(registrationForm.firstName) }}
+		</div>
+		<small class="gray mb-2 f-xs">Assurez-vous qu'il correspond au nom figurant sur votre pièce d'identité.</small>
+	</div>
+	<div class='col-md-12'>
+		<div class="form-floating">
+			{{ form_widget(registrationForm.birthday) }}
+			{{ form_errors(registrationForm.birthday) }}
+			{{ form_label(registrationForm.birthday) }}
+		</div>
+		<small class="gray mb-2 f-xs">Vous devez avoir au moins 18 ans pour vous inscrire. Nous n'indiquerons pas la date de votre anniversaire aux autres utilisateurs Immo.</small>
+	</div>
+
+	<div class='col-md-12'>
+		<div class="form-floating">
+			{{ form_widget(registrationForm.email) }}
+			{{ form_errors(registrationForm.email) }}
+			{{ form_label(registrationForm.email) }}
+		</div>
+		<div class="gray mb-2 f-xs">Nous vous enverrons les confirmations et les reçus de voyage par e-mail.</div>
+	</div>
+
+	<div class='col-md-12'>
+		<div class="form-floating">
+			{{ form_widget(registrationForm.plainPassword) }}
+			{{ form_errors(registrationForm.plainPassword) }}
+			{{ form_label(registrationForm.plainPassword) }}
+		</div>
+		<div class="gray mb-2 f-xs">En cliquant sur Accepter et continuer, j'accepte les <a href="#">Conditions générales</a>, les <a href="#">Conditions de service</a> relatives aux paiements, la Politique de non-discrimination et je reconnais avoir pris connaissance de la <a href="#">Politique de confidentialité</a> d'Immo.</div>
+	</div>
+
+	<div class='col-md'>
+		{{ form_widget(registrationForm.save)}}
+	</div>
+	{{ form_end(registrationForm) }}
+</div>

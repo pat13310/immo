@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginAuthenticator;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,8 +23,10 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+        $birthday=$form->get('birthday')->getData();
+        $birthday = implode('-',array_reverse  (explode('-',$birthday)));
         if ($form->isSubmitted() && $form->isValid()) {
+                         
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -31,7 +34,8 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $user->setRoles(['ROLE_USER']);   
+            $user->setBirthday(new DateTime($birthday));
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email

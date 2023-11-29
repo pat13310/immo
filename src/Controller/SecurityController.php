@@ -7,13 +7,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Doctrine\ORM\EntityManagerInterface;
 
 class SecurityController extends AbstractController
 {
-    use \App\Entity\Trait\LangagesAndDevisesTrait;    
+    use \App\Entity\Trait\LangagesAndDevisesTrait;
 
     #[Route(path: '/login', name: 'app.login')]
-    public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $langages = $this->langagesRepository->findAllLangages();
         $favorites = $this->langagesRepository->findFavorites();
@@ -22,13 +23,11 @@ class SecurityController extends AbstractController
         if ($this->getUser()) {
             return $this->redirectToRoute('app.home');
         }
-
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-             
-
+    
         return $this->render('home/index.html.twig', [
             'langages' => $langages,
             'favorites' => $favorites,
@@ -37,7 +36,6 @@ class SecurityController extends AbstractController
             'lastUsername' => $lastUsername,
             'error' => $error
         ]);
-        /* return $this->redirectToRoute('app.home',['login' => 'show','last_username' => $lastUsername, 'error' => $error]); */
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
@@ -45,4 +43,6 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+
+   
 }

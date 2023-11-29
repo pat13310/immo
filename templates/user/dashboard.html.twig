@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<section class="ml-170">
+			<h2><b>Compte</b></h2>
+			<p>
+				<b>Xenatronics G,
+					{% if app.user %}
+						{{ app.user.email}}
+					{% endif %}
+				</b>
+				<a href="#">
+					<strong>Aller au profil</strong>
+				</a>
+			</p>
+		</section>
+		<div class="grid-3"></div>
+	</div>
+{% endblock %}
+
+{% block js %}
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script src="{{asset('/build/js/common.js')}}"></script>
+	<script src="{{asset('/build/js/panel.js')}}"></script>
+	<script src="{{asset('/build/js/card.js')}}"></script>
+
+	<script>
+		let panel = document.querySelector('.container');
+        loadPanelAccount("{{asset('build/data/dashboard-account.json')}}");
+
+        function onNavigate(path){
+            window.location.href=path;
+        }
+
+		getCountry().then((country) => { 
+			loadCountryToSelect(country.name);
+		});
+
+	</script>
+{% endblock %}

@@ -12,8 +12,8 @@ async function fetchDataPhone(file) {
   }
 }
 
-async function fetchCountry() {
-  fetch("https://ip-api.io/json", {
+async function fetchCountry(file="https://ip-api.io/json") {
+  fetch(file, {
     method: "GET",
   })
     .then((response) => response.json())
@@ -29,9 +29,9 @@ async function fetchCountry() {
     });
 }
 
-async function fetchIPAddress() {
+async function fetchIPAddress(file="https://api.ipify.org?format=json") {
   return new Promise((resolve, reject) => {
-    fetch("https://api.ipify.org?format=json")
+    fetch(file)
       .then((response) => response.json())
       .then((data) => {
         const userIP = data.ip;
@@ -68,11 +68,9 @@ async function loadJson(file) {
   });
 }
 
-function loadCountryToSelect(selectedCountry) {
-  fetchDataPhone("build/data/country.json").then((data) => {
+function loadCountryToSelect(file, selectedCountry) {
+  fetchDataPhone(file).then((data) => {
     if (data) {
-      // Ici, vous pouvez utiliser les données JSON récupérées
-      // Par exemple, vous pouvez créer et remplir le select avec ces données
       const selectElement = document.getElementById("countrySelect");
 
       data.forEach((country) => {
@@ -88,20 +86,67 @@ function loadCountryToSelect(selectedCountry) {
   });
 }
 
-async function getCountry() {
+async function getCountry(filename) {
   let countries = [];
   const ip = await fetchIPAddress();
   const code = await getCountryFromIP(ip);
-  countries = await loadJson("build/data/country.json");
+  countries = await loadJson(filename);
   let val = countries.find((country) => country.code === code);
   return val;
 }
 
 function alertVanish() {
+  let _alert = document.querySelector(".alert");
   setTimeout(() => {
-    const alert = bootstrap.Alert.getOrCreateInstance(
-      document.querySelector(".alert")
-    );
-    if (alert) alert.close();
+    if (_alert == null) return;
+    const alert = bootstrap.Alert.getOrCreateInstance(_alert);
+    if (alert) {
+      alert.close();
+    }
   }, 3000);
 }
+
+async function loadPanelAccount(file) {
+  let _grid = document.querySelector(".grid-3");
+  const data = await loadJson(file);
+  data.forEach((panel) => {
+    _grid.innerHTML += `<div onclick="onNavigate('${panel.path}');" class="card-xs shadow rounded p-3">${panel.icon}<h6 class="mt-3"><b>${panel.title}</b></h6><span class="gray">${panel.text}</span></div>`;
+  });
+}
+
+function loadCountryOnlyToSelect(
+  file,
+  selectedCountry,
+  tagId = "countryOnlySelect",
+  isOnlyCountry = true
+) {
+    fetchDataPhone(file).then((data) => {
+    if (data) {
+      // Ici, vous pouvez utiliser les données JSON récupérées
+      // Par exemple, vous pouvez créer et remplir le select avec ces données
+      const selectElement = document.getElementById(tagId);
+
+      data.forEach((country) => {
+        const option = document.createElement("option");
+        option.value = country.indicatif;
+        if (selectedCountry == country.name) {
+          option.setAttribute("selected", true);
+        }
+        if (isOnlyCountry == true) {
+          option.text = `${country.name}`;
+        } else {
+          option.text = `${country.name} +(${country.indicatif}) `;
+        }
+        selectElement.appendChild(option);
+      });
+    }
+  });
+}
+
+
+// Telephone
+const maskTelOptions = {
+  mask: '+00[0] 0 00 00 00 00',	
+  lazy: false, // rendre placeholder toujours visible
+  placeholderChar: 'X'
+  };

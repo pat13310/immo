@@ -1,0 +1,14 @@
+<div class='row '>
+	{{ form_start(formMail) }}
+	<div class='col-md-12'>
+		<div class='form-floating'>
+			{{ form_widget(formMail.mailInput) }}
+			{{ form_errors(formMail.mailInput) }}
+			{{ form_label(formMail.mailInput, 'Adresse e-mail', {'label_attr': {'class': 'form-label gray'}}) }}
+		</div>
+	</div>
+	<div>
+		<button type='submit' class='col-3 btn btn-dark p-3 mt-3'>Enregistrer</button>
+	</div>
+	{{ form_end(formMail) }}
+</div>

@@ -12,8 +12,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[UniqueEntity(fields: ['email'], message: 'Un compte est déjà associé à ce mail')]
+#[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use Trait\CreatedAtTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -40,6 +42,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 32, nullable: true)]
     private ?string $phone = null;
 
+    #[ORM\Column(length: 128, nullable: true)]
+    private ?string $phone_emergency = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $identity = null;
+
+    #[ORM\Column(length: 128, nullable: true)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 128, nullable: true)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $birthday = null;
+
     
 
     public function getId(): ?int
@@ -55,7 +72,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -144,6 +160,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhone(?string $phone): static
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getPhoneEmergency(): ?string
+    {
+        return $this->phone_emergency;
+    }
+
+    public function setPhoneEmergency(?string $phone_emergency): static
+    {
+        $this->phone_emergency = $phone_emergency;
+
+        return $this;
+    }
+
+    public function getIdentity(): ?string
+    {
+        return $this->identity;
+    }
+
+    public function setIdentity(?string $identity): static
+    {
+        $this->identity = $identity;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(?string $firstname): static
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(?\DateTimeInterface $birthday): static
+    {
+        $this->birthday = $birthday;
 
         return $this;
     }

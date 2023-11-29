@@ -1,0 +1,25 @@
+<div class="row">
+	{{ form_start(formName)}}
+
+	<div class='col-md-6'>
+		<div class="form-floating">
+			{{ form_widget(formName.nameInput) }}
+			{{ form_errors(formName.nameInput) }}
+			{{ form_label(formName.nameInput, 'Nom', {'label_attr': {'class': 'form-label gray'}}) }}
+		</div>
+	</div>
+
+	<div class='col-md-6'>
+		<div class="form-floating">
+			{{ form_widget(formName.firstNameInput) }}
+			{{ form_errors(formName.firstNameInput) }}
+			{{ form_label(formName.firstNameInput, 'Prénom', {'label_attr': {'class': 'form-label gray'}}) }}
+		</div>
+	</div>
+
+	<div class='col-3'>
+		{{ form_widget(formName.save, {'attr': {'class': 'btn btn-dark p-3 mt-3'}}) }}
+	</div>
+
+	{{ form_end(formName) }}
+</div>

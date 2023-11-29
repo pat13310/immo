@@ -1,0 +1,22 @@
+<div class="row ">
+	{{ form_start(formTel)}}
+	<div class="col-md-12">
+		<div class="form-floating">
+			{{ form_widget(formTel.countrySelect) }}
+			{{ form_errors(formTel.countrySelect) }}
+			{{ form_label(formTel.countrySelect, 'Pays/Région', {'label_attr': {'class': 'form-label gray'}}) }}	
+			
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="form-floating">
+		{{ form_widget(formTel.phoneInput) }}
+			{{ form_errors(formTel.phoneInput) }}
+			{{ form_label(formTel.phoneInput, 'Numéro de téléphone', {'label_attr': {'class': 'form-label gray'}}) }}			
+		</div>
+	</div>
+	<div>
+		<button type="submit" class="col-3 btn btn-dark p-3 mt-3">Vérifier</button>
+	</div>
+	{{ form_end(formTel)}}
+</div>

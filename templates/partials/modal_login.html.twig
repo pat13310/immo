@@ -17,11 +17,11 @@
 							<button type="button" class="btn-close" data-bs-dismiss="alert"></div>
 						{% endif %}
 					{% endif %}
-					<div id="pan-mail">
+					<div id="pan-mail" >
 						<input class="mt-3 mb-3 form-control" id="inputEmail" name="email" type="text" placeholder="Adresse e-mail" autofocus/>
 						<input type="password" name="password" id="inputPassword" class="form-control mb-3" autocomplete="current-password" placeholder="Mot de passe"/>
 					</div>
-					<div id="pan-tel" class="collapse">
+					<div id="pan-tel" >
 						<select class="mt-3 form-control" id="countrySelect" name="country"></select>
 						<input class="mt-3 mb-3 form-control" id="inputPhone" name="phone" type="text" placeholder="Numéro de téléphone"/>
 					</div>
@@ -46,13 +46,13 @@
 					</div>
 					<div class="col">Continuer avec Facebook</div>
 				</div>
-				<div onclick="onAction('tel');" href="#" role="button" class="collapse" id="phone">
+				<div onclick="onAction('tel');" href="#" role="button" class="ms-0 row d-flex btn btn-light w-100 mb-3 py-3" id="phone">
 					<div class="col-1">
 						<i class="ic fas fa-mobile-screen fa-xl"></i>
 					</div>
 					<div class="col">Continuer avec Téléphone</div>
 				</div>
-				<div onclick="onAction('mail');" href="#" role="button" class="ms-0 row d-flex btn btn-light w-100 mb-3 py-3 " id="mail">
+				<div onclick="onAction('mail');" href="#" role="button"  class="ms-0 row d-flex btn btn-light w-100 mb-3 py-3"  id="mail">
 					<div class="col-1 ">
 						<i class="ic fas fa-envelope fa-xl"></i>
 					</div>

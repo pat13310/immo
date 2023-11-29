@@ -1,4 +1,4 @@
-<div class="modal" id="modal-login">
+<div class="modal modal-bottom" id="modal-login">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -9,12 +9,26 @@
 			</div>
 			<div class="modal-body">
 				<form id="form_login" name="form_login" method="post" onsubmit="return onValidateLogin() " action="/login">
-					<h4>Politique des cookies</h4>
-					<p>
-                    </p>
-					<button class="btn btn-danger w-100 py-3" type="submit">Continuer</button>
+					<h5>Votre vie privée<span>
+							<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 16px; width: 16px; fill: blue;">
+								<path d="M10.25 4a2.25 2.25 0 0 0-4.5-.15V6h-1.5V4a3.75 3.75 0 0 1 7.5-.2V6H13a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h7.25V4z"></path>
+							</svg>
+						</span>
+					</h5>
+					<div class="row">
+						<div class="col-6">
+							<p>
+								Nous utilisons des cookies et d'autres technologies similaires afin de personnaliser notre contenu, mesurer l'efficacité de nos publicités et améliorer leur pertinence, ainsi que proposer une meilleure expérience. En cliquant sur OK ou en activant une option dans Préférences de cookies, vous acceptez les conditions énoncées dans notre Politique en matière de cookies. Pour modifier vos préférences ou retirer votre consentement, vous devez mettre à jour vos Préférences de cookies.
+							</p>
+						</div>
+						<div class="col-6">
+							<button class="btn btn btn-outline-dark py-3">Paramètres de cookies</button>
+							<button class="btn btn-dark py-3">OK</button>
+						</div>
+					</div>
+					<a href="#">Continuer sans accepter</a>
 				</form>
-				
+
 			</div>
 
 		</div>

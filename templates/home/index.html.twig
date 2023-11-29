@@ -10,8 +10,9 @@
 
 	{{include("partials/modal_langages.html.twig") }}
 	{{include("partials/modal_login.html.twig") }}
-	<header>
+	
 
+	<header>
 		<div class="menu-header">
 			<div class="logo"></div>
 			<div class="spacer"></div>
@@ -43,7 +44,7 @@
 				</svg>
 				<div class="menu-log collapse">
 					<a class="first link-login" href="#" id="connect">Connexion</a>
-					<a href="#" id="signin">Inscription</a>
+					<a href="#" id="signup">Inscription</a>
 					<a href="/property/add">Mettre son commerce sur Immo</a>
 					<hr>
 					<a href="/help">Aide</a>
@@ -79,8 +80,9 @@
 </header>
 <main>
 	<div class="container">
-		<div id="cards"></div>
-	</main>
+	<div id="cards"></div>
+</main>
+{{include("partials/modal_register.html.twig") }}
 {% endblock %}
 
 {% block js %}
@@ -88,69 +90,90 @@
 	<script src="{{asset('/build/js/panel.js')}}"></script>
 	<script src="{{asset('/build/js/card.js')}}"></script>
 	<script src="{{asset('/build/js/common.js')}}"></script>
+	<script src="https://unpkg.com/imask"></script>
+	
 	<script>
-
-		let myModal = new bootstrap.Modal(document.getElementById('myModal'));
-		let myLogin = new bootstrap.Modal(document.getElementById('modal-login'));
-
+		// Les modales
+		let _modal_login=document.getElementById('modal-login');
+		let myGlobal = new bootstrap.Modal(document.getElementById('modal-global'));
+		let myLogin = new bootstrap.Modal(_modal_login);
+		let myRegister = new bootstrap.Modal(document.getElementById('modal-register'));
+		
 		let btnLog = document.querySelector('.log');
 		let menuLog = document.querySelector('.menu-log');
-		let signinLog = document.querySelector('#signin');
-		let linkLog = document.querySelector('#connect');
+		let registerLog = document.querySelector('#signup');
+		let loginLog = document.querySelector('#connect');
 
-		const _mail = document.querySelector("#mail");
-		const _phone = document.querySelector("#phone");
-		const _pan_tel = document.querySelector("#pan-tel");
-		const _pan_mail = document.querySelector("#pan-mail");
+		const btn_mail = document.querySelector("#mail");
+		const btn_phone = document.querySelector("#phone");
+		const input_tel = document.querySelector("#pan-tel");
+		const input_mail = document.querySelector("#pan-mail");
+		const input_birthday = document.querySelector("#registration_form_birthday");
+		
+		// Date de naissance
+		const maskDateOptions = {
+		mask: "0[0]-0[0]-0000",
+		lazy: true,
+		autofix: true,
+		blocks: {
+			d: {mask: IMask.MaskedRange, placeholderChar: 'd', from: 1, to: 31, maxLength: 2},
+			m: {mask: IMask.MaskedRange, placeholderChar: 'm', from: 1, to: 12, maxLength: 2},
+			Y: {mask: IMask.MaskedRange, placeholderChar: 'y', from: 1900, to: 2999, maxLength: 4}
+			}
+		};
+		
+		let mask = null;
+		if (mask==null){			
+			mask = IMask(input_birthday, maskDateOptions);			
+		}
 
-btnLog.addEventListener("click", () => {
-	menuLog.classList.toggle('collapse');
-	menuLog.classList.toggle('active');
-});
+		btnLog.addEventListener("click", () => {
+			menuLog.classList.toggle('collapse');
+			menuLog.classList.toggle('active');
+		});
 
-signinLog.addEventListener("click", () => {
-	signinLog.classList.add('first');
-	linkLog.classList.remove('first');
-	myLogin.show();
-});
+		registerLog.addEventListener("click", () => {
+			registerLog.classList.add('first');
+			loginLog.classList.remove('first');
+			myRegister.show();
+		});
 
-linkLog.addEventListener("click", () => {
-	linkLog.classList.add('first');
-	signinLog.classList.remove('first');
-	myLogin.show();
-});
+		loginLog.addEventListener("click", () => {
+			loginLog.classList.add('first');
+			registerLog.classList.remove('first');
+			myLogin.show();
+		});
 
-{% if login == "show" %}
-	myLogin.show();
-{% endif %}
+		{% if login == "show" %}
+			myLogin.show();
+		{% endif %}
 
-selectPanel(panels_sel);
-selectPanel(panels_fav, "selected");
-selectPanel2(panels_dev);
+		selectPanel(panels_sel);
+		selectPanel(panels_fav, "selected");
+		selectPanel2(panels_dev);
 
-cards.forEach((card) => {
-	new CreateCard(card);
-});
+		cards.forEach((card) => {
+			new CreateCard(card);
+		});
 
-slides.forEach((card) => {
-	new CreateCardSlide(card);
-});
+		slides.forEach((card) => {
+			new CreateCardSlide(card);
+		});
 
+		_global.addEventListener("click", () => {
+			myGlobal.show();
+		});
 
-_global.addEventListener("click", () => {
-myModal.show();
-});
+		anywhere.addEventListener("click", () => {
+			console.log("You clicked");
+		});
 
-anywhere.addEventListener("click", () => {
-console.log("You clicked");
-});
+		getCountry("{{ asset('build/data/country.json') }}").then((country) => {
+				loadCountryOnlyToSelect("{{ asset('build/data/country.json') }}", country.name, "countrySelect",false);
+				});
+				
+		alertVanish();
+		onAction("mail");
 
-let pays = "";
-
-getCountry().then((country) => { // console.log(country.name);
-loadCountryToSelect(country.name);
-});
-
-alertVanish();
 	</script>
 {% endblock %}

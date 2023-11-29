@@ -21,7 +21,7 @@ class PropertyFixtures extends Fixture
             'Nice', 'Toulouse',
             'Toulon',
             'St Martin de Crau',
-            'Aix en provence'
+            'Aix en provence','Perpignan'
         ];
 
         foreach ($cityNames as $cityName) {

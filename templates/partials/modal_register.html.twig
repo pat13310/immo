@@ -1,0 +1,36 @@
+<div class="modal" id="modal-register">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-label="Close" class="btn">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewbox="0 0 16 16">
+						<path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+					</svg>
+				</button>
+				<h5 class="modal-title w-100  text-center">Terminer votre inscription</h5>
+
+			</div>
+			<div class="modal-body">
+				{% if error is defined %}
+					{% if error.messageKey is defined %}
+						<div class="alert alert-danger alert-dismissible fade show" role="alert"></button>
+						{{ error.messageKey|trans(error.messageData, 'security') }}
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></div>
+					{% endif %}
+				{% endif %}
+				{{ include("partials/register.html.twig")}}
+				<div>
+					<hr>
+					<div class="gray f-xs mb-3">Immo vous enverra des offres réservées aux membres, des idées, des e-mails promotionnels et des notifications push. Vous pouvez désactiver cette option à tout moment dans les paramètres de votre compte ou directement à partir de la notification promotionnelle.</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="exampleCheckbox">
+						<label class="form-check-label small gray" for="exampleCheckbox">
+							Je ne souhaite pas recevoir de messages promotionnels d'Immo.
+						</label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
