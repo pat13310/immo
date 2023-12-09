@@ -10,6 +10,7 @@
         "doctrine/doctrine-bundle": "^2.10",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.16",
+        "dompdf/dompdf": "^2.0",
         "fakerphp/faker": "^1.5",
         "fzaninotto/faker": "^1.5",
         "knpuniversity/oauth2-client-bundle": "^2.16",

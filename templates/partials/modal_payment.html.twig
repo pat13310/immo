@@ -1,0 +1,65 @@
+<div class="modal" id="modal-payment">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true"></span>
+				</button>
+				<h5 class="modal-title w-100  text-center">Indiquez les informations de votre carte</h5>
+			</div>
+			{{ form_start(paymentForm)}}
+			<div class="modal-body">
+				<div>
+					<div class="d-inline"><img src="{{asset('/build/images/cards/logo_amex.svg')}}" alt="logo" height="9"></div>
+					<div class="d-inline"><img src="{{asset('/build/images/cards/logo_visa.svg')}}" alt="logo" height="9"></div>
+					<div class="d-inline"><img src="{{asset('/build/images/cards/logo_mastercard.svg')}}" alt="logo" height="9"></div>
+					<div class="d-inline"><img src="{{asset('/build/images/cards/logo_discover.svg')}}" alt="logo" height="9"></div>
+				</div>
+				{% if error is defined %}
+					{% if error.messageKey is defined %}
+						<div class="alert alert-danger alert-dismissible fade show" role="alert"></button>
+						{{ error.messageKey|trans(error.messageData, 'security') }}
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></div>
+					{% endif %}
+				{% endif %}
+
+			
+			<div class='col-md-12'>
+				<div class="form-floating">
+					{{ form_widget(paymentForm.numberCard) }}
+					{{ form_errors(paymentForm.numberCard) }}
+					{{ form_label(paymentForm.numberCard) }}
+				</div>
+			</div>
+			<div class="row">
+				<div class='col-md-6'>
+					<div class="form-floating">
+						{{ form_widget(paymentForm.expireDate) }}
+						{{ form_errors(paymentForm.expireDate) }}
+						{{ form_label(paymentForm.expireDate) }}
+					</div>
+				</div>
+				<div class='col-md-6'>
+					<div class="form-floating">
+						{{ form_widget(paymentForm.crypto) }}
+						{{ form_errors(paymentForm.crypto) }}
+						{{ form_label(paymentForm.crypto) }}
+					</div>
+				</div>
+			</div>
+			<div class='col-md-12'>
+				<div class="form-floating">
+					{{ form_widget(paymentForm.codePostal) }}
+					{{ form_errors(paymentForm.codePostal) }}
+					{{ form_label(paymentForm.codePostal) }}
+				</div>
+			</div>
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+		</div>
+		<div class="modal-footer w-100 justify-content-between">
+			<button class="btn btn-outline-dark py-3 float-start" data-bs-dismiss="modal">Annuler</button>
+			<button class="btn btn-dark py-3 float-end" type="submit">Terminé</button>
+		</div>
+		{{form_end(paymentForm) }}
+	</div>
+</div></div>

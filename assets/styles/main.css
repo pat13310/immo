@@ -70,9 +70,22 @@ body {
   top: 50px;
 }
 
+.black{
+  color:black;
+}
+
 .gray {
   color: rgba(128, 128, 128, 0.85);
   font-weight: 300;
+}
+
+.gray-2 {
+  color: rgba(50, 50, 50, 0.9);
+}
+
+
+.gray-3 {
+  color: rgba(80, 80, 80, 0.9);
 }
 
 .darkgray {
@@ -152,7 +165,7 @@ body {
   height: 178px;
 }
 
-.card:hover{
+.card:hover {
   box-shadow: 1px 1px 6px black;
   cursor: pointer;
 }
@@ -161,8 +174,6 @@ body {
   border: 1px solid rgb(243, 83, 83);
   cursor: pointer;
 }
-
-
 
 .card img {
   top: 0px;
@@ -429,21 +440,69 @@ body {
   justify-content: center;
 }
 
-.ml-170{
+.ml-170 {
   margin-left: 170px;
 }
 
-.modal-bottom{
+.modal-bottom {
   position: fixed;
-  bottom: 8px !important;  
+  bottom: 8px !important;
   margin: 0;
 }
 
-.text-sm{
+.text-sm .f-sm{
   font-size: 0.85rem;
 }
 
 
-.f-xs{
-  font-size: 0.75rem;
+.f-xs {
+  font-size: 0.75em;
+}
+.f-sm{
+  font-size: 0.8em;
+}
+
+.f-md {
+  font-size: 1em;
+}
+
+.f-lg {
+  font-size: 1.15em;
+}
+
+.f-md2 {
+  font-size: 1.05em;
+}
+
+
+.f-xl {
+  font-size: 1.5em;
+}
+
+.f-xxl {
+  font-size: 1.75em;
+}
+
+.card-info {
+  border: 1px solid rgb(221, 221, 221) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin-top: 48px !important;
+  line-height: 26px !important;
+  font-size: 0.85em;
+}
+
+.card-option{
+  border: 1px solid rgb(141, 141, 141) !important;
+  /* border-radius: 12px !important; */
+  padding: 24px 16px !important;
+  /* margin-bottom: 8px; */
+}
+
+.card-option:hover{
+  border: 1.75px solid rgb(57, 57, 57) !important;
+  /* border-radius: 12px !important; */
+  padding: 24px 16px !important;
+  /* margin-bottom: 8px; */
+  cursor: pointer;
 }

@@ -1,0 +1,17 @@
+<div class='row '>
+	{{ form_start(giftForm) }}
+	<div class='col-md-12'>
+		<div class='form-floating'>
+			{{ form_widget(giftForm.gift_code) }}
+			{{ form_errors(giftForm.gift_code) }}
+			{{ form_label(giftForm.gift_code, 'Code', {'label_attr': {'class': 'form-label gray'}}) }}
+		</div>
+	</div>
+    <div class="gray-2 f-md-2 mt-3">
+    En utilisant cette carte cadeau, vous acceptez les Conditions d'Immo relatives aux cartes cadeaux.
+    </div>
+	<div>
+		<button type='submit' class='w-100 col-3 btn btn-danger p-3 mt-3'>Ajouter une carte cadeau</button>
+	</div>
+	{{ form_end(giftForm) }}
+</div>

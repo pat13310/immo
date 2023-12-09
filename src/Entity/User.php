@@ -57,6 +57,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $birthday = null;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Card $card = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Extra $extra = null;
     
 
     public function getId(): ?int
@@ -208,7 +213,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstname(?string $firstname): static
     {
         $this->firstname = $firstname;
-
         return $this;
     }
 
@@ -220,6 +224,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setBirthday(?\DateTimeInterface $birthday): static
     {
         $this->birthday = $birthday;
+        return $this;
+    }
+
+    public function getCard(): ?Card
+    {
+        return $this->card;
+    }
+
+    public function setCard(?Card $card): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($card === null && $this->card !== null) {
+            $this->card->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($card !== null && $card->getUser() !== $this) {
+            $card->setUser($this);
+        }
+        $this->card = $card;
+        return $this;
+    }
+
+    public function getExtra(): ?Extra
+    {
+        return $this->extra;
+    }
+
+    public function setExtra(?Extra $extra): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($extra === null && $this->extra !== null) {
+            $this->extra->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($extra !== null && $extra->getUser() !== $this) {
+            $extra->setUser($this);
+        }
+
+        $this->extra = $extra;
 
         return $this;
     }

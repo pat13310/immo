@@ -11,6 +11,7 @@
 a {
   color: var(--bs-link-color-rgb);
   text-decoration: underline;
+  font-weight: 600;
 }
 
 .btn-danger {
@@ -80,4 +81,122 @@ a {
   transform: scale(0.9); /* Ajustez la taille du placeholder */
   transform-origin: left; /* Déplacez le placeholder vers la gauche */
   color: #6c757d; /* Couleur du placeholder lorsqu'il est en focus */
+}
+
+.nav-tabs .nav-link:hover {
+  margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+  background-color: #eaeaea !important;
+  border-radius: 4px;
+  margin: 4px;
+}
+
+.nav-tabs .nav-link {
+  margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+  background-color: transparent !important;
+  border-color: transparent !important;
+  margin: 4px;
+  /*border: var(--bs-nav-tabs-border-width) solid transparent;
+  border-top-left-radius: var(--bs-nav-tabs-border-radius);
+  border-top-right-radius: var(--bs-nav-tabs-border-radius);*/
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: var(--bs-nav-tabs-link-active-color);
+  background-color: transparent !important;
+  border-color: transparent !important;
+  border-bottom: 2px solid #fe365b !important;
+  margin: 4px;
+}
+
+.nav-tabs .nav-link {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  margin: 4px;
+
+  /* border: var(--bs-nav-tabs-border-width) solid transparent; */
+  /* border-top-left-radius: var(--bs-nav-tabs-border-radius); */
+  /* border-top-right-radius: var(--bs-nav-tabs-border-radius); */
+}
+
+.btn,
+.navbar .nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.sandstone,
+.tooltip,
+.dropdown-menu .dropdown-item,
+.pagination,
+.breadcrumb,
+.nav-pills .nav-link,
+.nav-tabs .nav-link,
+.btn,
+.navbar .nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-transform: none;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.btn-dark {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #363636;
+  --bs-btn-border-color: #3e3f3a;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: black;
+  --bs-btn-hover-border-color: #51524e;
+  --bs-btn-focus-shadow-rgb: 91, 92, 88;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #656561;
+  --bs-btn-active-border-color: #51524e;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #545454;
+  --bs-btn-disabled-border-color: #3e3f3a;
+}
+
+.form-floating ul {
+  color: red;
+  list-style-type: none;
+  margin-left: -24px;
+}
+
+input[type="radio"] {
+  width: 1.35em; // Ajustez la largeur du cercle
+  color: #000 !important;
+  height: 1.35em; // Ajustez la hauteur du cercle
+  outline: none; // Supprime la bordure de focus par défaut
+
+  &:checked {
+    background-color: #000 !important; // Couleur de fond lorsque le bouton radio est coché (noir dans cet exemple)
+    border-color: #000 !important; // Couleur de la bordure lorsque le bouton radio est coché
+  }
+}
+
+.form-check > input[type="radio"]{
+  &:checked {
+  background-color: black !important;
+  border-color: #1d1c1c !important;
+  color: black !important;
+  }
+  &:focus{
+    border-color: white!important;
+    outline: 0;
+    box-shadow: 0 0 0 0.05rem rgb(238, 3, 3)!important;
+  }
+}
+
+.form-floating ul li::before {
+  content: "\F071";
+  font-family: "Font Awesome 5 Free";
+  font-size: 22px;
+  font-weight: 800;
+  margin-right: 0.5em;
 }

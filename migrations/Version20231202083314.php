@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20231028123805 extends AbstractMigration
+final class Version20231202083314 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,16 @@ final class Version20231028123805 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE langages ADD is_favorite TINYINT(1) NOT NULL');
+        $this->addSql('ALTER TABLE card ADD relation_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE card ADD CONSTRAINT FK_161498D33256915B FOREIGN KEY (relation_id) REFERENCES `user` (id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_161498D33256915B ON card (relation_id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE langages DROP is_favorite');
+        $this->addSql('ALTER TABLE card DROP FOREIGN KEY FK_161498D33256915B');
+        $this->addSql('DROP INDEX UNIQ_161498D33256915B ON card');
+        $this->addSql('ALTER TABLE card DROP relation_id');
     }
 }

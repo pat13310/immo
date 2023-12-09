@@ -26,12 +26,11 @@ class HomeController extends AbstractController
         $favorites = $this->langagesRepository->findFavorites();
         $devises = $this->deviseRepository->findAll();
 
-
         $formMail = $this->createForm(RegistrationFormType::class);
         $formMail->handleRequest($request);
 
         if ($factory->isValid($formMail)){
-
+            
         }
         return $this->render('home/index.html.twig', [
             'langages' => $langages,
@@ -42,17 +41,5 @@ class HomeController extends AbstractController
         ]);
     }
 
-  /*   #[Route('/login', name: 'app.login')]
-    public function login(): Response
-    {
-        $langages = $this->langagesRepository->findAllLangages();
-        $favorites = $this->langagesRepository->findFavorites();
-        $devises = $this->deviseRepository->findAll();
-
-        return $this->render('home/login.html.twig', [
-            'langages' => $langages,
-            'favorites' => $favorites,
-            'devises' => $devises,
-        ]);
-    } */
+  
 }

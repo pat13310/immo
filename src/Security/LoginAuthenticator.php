@@ -60,7 +60,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // On redirige vers la page d'accueil si pas d'authentication correcte 
-        return new RedirectResponse($this->urlGenerator->generate('app.home'));
+        return new RedirectResponse($this->urlGenerator->generate('user.dashboard'));
     }
 
     

@@ -150,3 +150,19 @@ const maskTelOptions = {
   lazy: false, // rendre placeholder toujours visible
   placeholderChar: 'X'
   };
+
+
+ // Carte CB
+const maskCardOptions = {
+  mask: '0000 0000 0000 0000',	
+  lazy: false, // rendre placeholder toujours visible
+  //placeholderChar: '0'
+  };
+
+
+   // Date MM/AA
+const maskExpireOptions = {
+  mask: '00/00',	
+  lazy: false, // rendre placeholder toujours visible
+  //placeholderChar: '_'
+  };

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérez vos modes de versements
+{% endblock %}
+
+{% block body %}
+
+	<div class="row container w-80 mx-auto">
+		<div class="col-md-6">
+
+			<section class="mx-auto mb-5">
+				<a href="/user/dashboard">
+					<strong>Compte</strong>
+				</a>
+				<span>&nbsp;>&nbsp;</span>
+				<a href="/user/payment">
+					<strong>Paiements et versements</strong>
+				</a>
+				<span>&nbsp;>&nbsp;</span>
+				<span class="my-2">Ajouter votre carte cadeau</span>
+				<h2 class="mt-4 bold">Utiliser votre carte cadeau</h2>
+				{{ include ('/partials/form/form_gift.html.twig') }}
+			</section>
+		</div>
+		<div class="col-md-6">
+			<div class="">
+				<section>
+					<div class="f-md2 mt-2">
+						<img alt="gift" src="{{asset('/build/images/gift.webp')}}" class="w-100 object-fit-contain rounded-3" />
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block js %}
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script src="{{asset('/build/js/common.js')}}"></script>
+	<script src="https://unpkg.com/imask"></script>
+
+	<script></script>
+
+{% endblock %}

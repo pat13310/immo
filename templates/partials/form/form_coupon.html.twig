@@ -1,0 +1,15 @@
+<div class='row '>
+	{{ form_start(couponForm) }}
+	<div class='col-md-12'>
+		<div class='form-floating'>
+			{{ form_widget(couponForm.coupon_code) }}
+			{{ form_errors(couponForm.coupon_code) }}
+			{{ form_label(couponForm.coupon_code) }}
+		</div>
+	</div>
+	<div class="row mb-3">
+		<button type='submit' class='col-3 btn btn-dark p-3 mt-3 ms-3 '>Ajouter le coupon</button>
+		<button type='button' class='col-3 btn btn-outline-dark p-3 mt-3 ms-5'>Annuler</button>
+	</div>
+	{{ form_end(couponForm) }}
+</div>
