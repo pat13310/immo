@@ -27,7 +27,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/user', name: 'user.')]
 class UserController extends AbstractController
 {
-    //use \App\Entity\Trait\LangagesAndDevisesTrait;
+    use \App\Entity\Trait\LangagesAndDevisesTrait;
 
     #[Route('/dashboard', name: 'dashboard')]
     public function dashboard(): Response
@@ -182,17 +182,20 @@ class UserController extends AbstractController
     public function payment_method(
         Request $request,
         Factory $factory,
-        Util $helper,
+       
         EntityManagerInterface $em,
         ExtraRepository  $giftRepository
     ): Response {
+        
         $user = $this->getUser();
+        $langages=$this->getAllLangages();
         $paymentMethodForm = $this->createForm(PaymentMethodFormType::class);
         $paymentMethodForm->handleRequest($request);
         if ($factory->isValid($paymentMethodForm) && $user) {
         }
         return $this->render('user/payment_method.html.twig', [
             "paymentMethodForm" => $paymentMethodForm->createView(),
+            "langages" => $langages,
         ]);
     }
 
@@ -207,10 +210,12 @@ class UserController extends AbstractController
         $user = $this->getUser();
         $paymentMethodForm = $this->createForm(PaymentMethodFormType::class);
         $paymentMethodForm->handleRequest($request);
+       
         if ($factory->isValid($paymentMethodForm) && $user) {
         }
         return $this->render('user/payment_method_add.html.twig', [
             "paymentMethodForm" => $paymentMethodForm->createView(),
+           
         ]);
     }
 }
