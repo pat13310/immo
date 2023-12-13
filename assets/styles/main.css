@@ -493,6 +493,7 @@ body {
 }
 
 .card-option{
+  display: flex;
   border: 1px solid rgb(141, 141, 141) !important;
   /* border-radius: 12px !important; */
   padding: 24px 16px !important;
@@ -500,9 +501,18 @@ body {
 }
 
 .card-option:hover{
+  display: flex;
   border: 1.75px solid rgb(57, 57, 57) !important;
   /* border-radius: 12px !important; */
   padding: 24px 16px !important;
   /* margin-bottom: 8px; */
   cursor: pointer;
+}
+
+.card-option ul>li:first-child{
+  list-style-type: none;
+  font-weight: 800;
+  font-size: 1.15em;
+  color:black;
+  margin-left: -15px;
 }

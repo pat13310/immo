@@ -203,7 +203,7 @@ class UserController extends AbstractController
     public function payment_method_add(
         Request $request,
         Factory $factory,
-       EntityManagerInterface
+       
         
     ): Response {
         $user = $this->getUser();
@@ -213,8 +213,7 @@ class UserController extends AbstractController
         if ($factory->isValid($paymentMethodForm) && $user) {
         }
         return $this->render('user/payment_method_add.html.twig', [
-            "paymentMethodForm" => $paymentMethodForm->createView(),
-           
+            "paymentMethodForm" => $paymentMethodForm->createView(),           
         ]);
     }
 }

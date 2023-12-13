@@ -25,5 +25,12 @@
 {% endblock %}
 {% block js %}
 	
+		<script src="{{asset('/build/js/common.js')}}"></script>
+	<script>
+		getCountry("{{ asset('build/data/country.json') }}").then((country) => {
+				loadCountryOnlyToSelect("{{ asset('build/data/country.json') }}", country.name, "payment_method_form_country",false);
+				});
+	</script>
 	
+
 {% endblock %}
