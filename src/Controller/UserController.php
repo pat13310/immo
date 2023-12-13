@@ -203,8 +203,7 @@ class UserController extends AbstractController
     public function payment_method_add(
         Request $request,
         Factory $factory,
-        EntityManagerInterface $em,
-        ExtraRepository  $giftRepository,
+       EntityManagerInterface
         
     ): Response {
         $user = $this->getUser();
