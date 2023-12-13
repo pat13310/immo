@@ -251,7 +251,7 @@ body {
   padding: 0 0.9rem;
 }
 .log:hover {
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 1px 4px #00000059;
   cursor: pointer;
 }
 .menu-end {
@@ -293,7 +293,7 @@ body {
   border-radius: 25px;
   padding: 0.9rem;
   /*box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35);*/
-  background: rgba(245, 245, 245, 0.85);
+  background: #f5f5f5d9;
   cursor: pointer;
 }
 #global,
@@ -311,11 +311,11 @@ body {
 #global2:hover {
   border-radius: 50%;
   padding: 0.9rem;
-  background: rgba(245, 245, 245, 0.85);
+  background: #f5f5f5d9;
   cursor: pointer;
 }
 .slide-card:hover {
-  border-bottom: 4px solid rgba(145, 143, 143, 0.5);
+  border-bottom: 4px solid #918f8f80;
 }
 .spacer {
   width: 50%;
@@ -348,7 +348,7 @@ body {
   width: 100%;
   background: white;
   border-radius: 22px;
-  border: 1px solid rgba(194, 194, 194, 0.5);
+  border: 1px solid #c2c2c280;
   height: 65px;
 }
 
@@ -417,7 +417,7 @@ body {
   display: block !important;
   width: 100% !important;
   height: 1px !important;
-  background-color: rgb(221, 221, 221) !important;
+  background-color: #dddddd !important;
   margin-right: 16px !important;
 }
 
@@ -426,7 +426,7 @@ body {
   display: block !important;
   width: 100% !important;
   height: 1px !important;
-  background-color: rgb(221, 221, 221) !important;
+  background-color: #dddddd !important;
   margin-left: 16px !important;
 }
 
@@ -484,7 +484,7 @@ body {
 }
 
 .card-info {
-  border: 1px solid rgb(221, 221, 221) !important;
+  border: 1px solid #dddddd !important;
   border-radius: 12px !important;
   padding: 24px !important;
   margin-top: 48px !important;
@@ -494,7 +494,7 @@ body {
 
 .card-option{
   display: flex;
-  border: 1px solid rgb(141, 141, 141) !important;
+  border: 1px solid #8d8d8d !important;
   /* border-radius: 12px !important; */
   padding: 24px 16px !important;
   /* margin-bottom: 8px; */
@@ -502,7 +502,7 @@ body {
 
 .card-option:hover{
   display: flex;
-  border: 1.75px solid rgb(57, 57, 57) !important;
+  border: 1.75px solid #393939 !important;
   /* border-radius: 12px !important; */
   padding: 24px 16px !important;
   /* margin-bottom: 8px; */
