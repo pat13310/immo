@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Service\JsonService;
 use App\Form\Type\RadioButtonType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -13,17 +14,20 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class PaymentMethodFormType extends AbstractType
 {
+    private $tab=[];
     public function __construct(
-        //private ExtraRepository $extraRepository,
-        private  Security $security
+        private  Security $security,
+        JsonService $jsonService,
     ) {
+        $this->tab=$jsonService->getCountries('build/data/country.json');
+        //dd($this->tab);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('country', ChoiceType::class, [
-                'choices'=>[],
+                'choices'=>$this->tab,                   
                 'required' => false,
                 'row_attr' => ['class' => 'form-floating'],
                 'attr' => [

@@ -190,6 +190,7 @@ class UserController extends AbstractController
         $paymentMethodForm = $this->createForm(PaymentMethodFormType::class);
         $paymentMethodForm->handleRequest($request);
         if ($factory->isValid($paymentMethodForm) && $user) {
+            dd($request);
         }
         return $this->render('user/payment_method.html.twig', [
             "paymentMethodForm" => $paymentMethodForm->createView(),
