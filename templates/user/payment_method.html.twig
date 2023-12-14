@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gérez vos modes de paiments
-{% endblock %}
+{% block title %}Gérez vos modes de paiments{% endblock %}
 
 {% block body %}
-	
+
 	<div class="row container w-50 mx-auto">
 		<div class="col-md-12">
 			<section class="mx-auto mb-5">
@@ -19,18 +18,17 @@
 				<label class="mt-2 bold">Pays/région de facturation</label>
 				{{ include('/partials/form/form_payment_method.html.twig') }}
 			</section>
-
 		</div>
 	</div>
 {% endblock %}
+
 {% block js %}
-	
-		<script src="{{asset('/build/js/common.js')}}"></script>
+
+	<script src="{{asset('/build/js/common.js')}}"></script>
 	<script>
-		getCountry("{{ asset('build/data/country.json') }}").then((country) => {
-				loadCountryOnlyToSelect("{{ asset('build/data/country.json') }}", country.name, "payment_method_form_country",false);
-				});
-	</script>
 	
+		loadCountryOnlyToSelect("{{ asset('build/data/country.json') }}", "FR", "payment_method_form_country");
+	
+	</script>
 
 {% endblock %}

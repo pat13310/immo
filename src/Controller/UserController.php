@@ -13,14 +13,12 @@ use App\Form\GiftFormType;
 use App\Form\FormPhoneType;
 use App\Form\CouponFormType;
 use App\Form\PaymentFormType;
-use Monolog\Handler\Curl\Util;
 use App\Repository\CardRepository;
 use App\Form\PaymentMethodFormType;
 use App\Repository\ExtraRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Intl\Util\GitRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -203,16 +201,41 @@ class UserController extends AbstractController
     public function payment_method_add(
         Request $request,
         Factory $factory,
+               
+    ): Response {
+        
+        $user = $this->getUser();
+        dd($request);
+        $paymentMethodForm = $this->createForm(PaymentMethodFormType::class);
+        $paymentMethodForm->handleRequest($request);
+        
+        if ($factory->isValid($paymentMethodForm) && $user) {
+            $data=$paymentMethodForm->getData();
+            dd($data);
+            return$this->redirectToRoute('payment.owner');
+        }
+
+        return $this->render('user/payment_method_add.html.twig', [
+            "paymentMethodForm" => $paymentMethodForm->createView(),           
+        ]);
+    }
+
+    #[Route('/payment/owner', name: 'payment.owner')]
+    public function payment_owner(
+        Request $request,
+        Factory $factory,
        
         
     ): Response {
         $user = $this->getUser();
         $paymentMethodForm = $this->createForm(PaymentMethodFormType::class);
         $paymentMethodForm->handleRequest($request);
-       
+        
         if ($factory->isValid($paymentMethodForm) && $user) {
+        
         }
-        return $this->render('user/payment_method_add.html.twig', [
+
+        return $this->render('user/payment_owner.html.twig', [
             "paymentMethodForm" => $paymentMethodForm->createView(),           
         ]);
     }

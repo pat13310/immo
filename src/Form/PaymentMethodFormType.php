@@ -23,26 +23,32 @@ class PaymentMethodFormType extends AbstractType
     {
         $builder
             ->add('country', ChoiceType::class, [
+                'choices'=>[],
                 'required' => false,
                 'row_attr' => ['class' => 'form-floating'],
                 'attr' => [
                     'class' => 'form-select my-2',
                     'placeholder' => ''
                 ],
-                'constraints' => [
+                /* 'constraints' => [
                     new Callback([
                         'callback' => [$this, 'validateCodeExists'],
                     ]),                   
-                ],
+                ], */
                 'label_attr' => ['class' => 'form-label gray'],
                 'label' => 'Pays/Région de la facturation',
             ])
             ->add('method', ChoiceType::class, [
              'choices' => [
-                    'Compte bancaire en EUR' => 'CB_EUR',
-                    'PayPal en EUR' => 'PayPal_EUR',
-                    'PayPal en USD' => 'PayPal_USD',
+                    'Compte bancaire en EUR' => '0',
+                    'PayPal en EUR' => '1',
+                    'PayPal en USD' => '2',
                     // ... ajoutez autant d'options que nécessaire
+                ],
+                'constraints' => [
+                    new Callback([
+                        'callback' => [$this, 'validateChoiceExists'],
+                    ]),                   
                 ],
                 'expanded' => true, // Ceci rend le champ sous forme de boutons radio
                 'multiple' => false, // Un seul choix possible
@@ -63,11 +69,27 @@ class PaymentMethodFormType extends AbstractType
         $codeExists = false;
         $error = false;
 
-        if (strlen($value) == 0) {
+        /* if (strlen($value) == 0) {
             $context->buildViolation('Le code pays est absent.')
                 ->addViolation();
             $error = true;
             return;
+        } */
+    
+    }
+    public function validateChoiceExists($value, ExecutionContextInterface $context)
+    {
+        // Récupérez l'utilisateur actuellement authentifié
+        $user = $this->security->getUser();
+        $codeExists = false;
+        $error = false;
+
+        if (strlen($value) == 0) {
+            $context->buildViolation('Aucun mode sélectionné.')
+                ->addViolation();
+            $error = true;
+            return;
         }
+            
     }
 }

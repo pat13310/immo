@@ -2,211 +2,211 @@
     {
         "name": "Albanie",
         "code": "AL",
-        "indicatif": "355"
+        "indicatif": 355
     },
     {
         "name": "Allemagne",
         "code": "DE",
-        "indicatif": "49"
+        "indicatif": 49
     },
     {
         "name": "Andorre",
         "code": "AD",
-        "indicatif": "376"
+        "indicatif": 376
     },
     {
         "name": "Autriche",
         "code": "AT",
-        "indicatif": "43"
+        "indicatif": 43
     },
     {
         "name": "Belgique",
         "code": "BE",
-        "indicatif": "32"
+        "indicatif": 32
     },
     {
         "name": "Biélorussie",
         "code": "BY",
-        "indicatif": "375"
+        "indicatif": 375
     },
     {
         "name": "Bosnie-Herzégovine",
         "code": "BA",
-        "indicatif": "387"
+        "indicatif": 387
     },
     {
         "name": "Bulgarie",
         "code": "BG",
-        "indicatif": "359"
+        "indicatif": 359
     },
     {
         "name": "Chypre",
         "code": "CY",
-        "indicatif": "357"
+        "indicatif": 357
     },
     {
         "name": "Croatie",
         "code": "HR",
-        "indicatif": "385"
+        "indicatif": 385
     },
     {
         "name": "Danemark",
         "code": "DK",
-        "indicatif": "45"
+        "indicatif": 45
     },
     {
         "name": "Espagne",
         "code": "ES",
-        "indicatif": "34"
+        "indicatif": 34
     },
     {
         "name": "Estonie",
         "code": "EE",
-        "indicatif": "372"
+        "indicatif": 372
     },
     {
         "name": "Finlande",
         "code": "FI",
-        "indicatif": "358"
+        "indicatif": 358
     },
     {
         "name": "France",
         "code": "FR",
-        "indicatif": "33"
+        "indicatif": 33
     },
     {
         "name": "Grèce",
         "code": "GR",
-        "indicatif": "30"
+        "indicatif": 30
     },
     {
         "name": "Hongrie",
         "code": "HU",
-        "indicatif": "36"
+        "indicatif": 36
     },
     {
         "name": "Irlande",
         "code": "IE",
-        "indicatif": "353"
+        "indicatif": 353
     },
     {
         "name": "Islande",
         "code": "IS",
-        "indicatif": "354"
+        "indicatif": 354
     },
     {
         "name": "Italie",
         "code": "IT",
-        "indicatif": "39"
+        "indicatif": 39
     },
     {
         "name": "Lettonie",
         "code": "LV",
-        "indicatif": "371"
+        "indicatif": 371
     },
     {
         "name": "Lituanie",
         "code": "LT",
-        "indicatif": "370"
+        "indicatif": 370
     },
     {
         "name": "Luxembourg",
         "code": "LU",
-        "indicatif": "352"
+        "indicatif": 352
     },
     {
         "name": "Macédoine du Nord",
         "code": "MK",
-        "indicatif": "389"
+        "indicatif": 389
     },
     {
         "name": "Malte",
         "code": "MT",
-        "indicatif": "356"
+        "indicatif": 356
     },
     {
         "name": "Moldavie",
         "code": "MD",
-        "indicatif": "373"
+        "indicatif": 373
     },
     {
         "name": "Monténégro",
         "code": "ME",
-        "indicatif": "382"
+        "indicatif": 382
     },
     {
         "name": "Norvège",
         "code": "NO",
-        "indicatif": "47"
+        "indicatif": 47
     },
     {
         "name": "Pays-Bas",
         "code": "NL",
-        "indicatif": "31"
+        "indicatif": 31
     },
     {
         "name": "Pologne",
         "code": "PL",
-        "indicatif": "48"
+        "indicatif": 48
     },
     {
         "name": "Portugal",
         "code": "PT",
-        "indicatif": "351"
+        "indicatif": 351
     },
     {
         "name": "République tchèque",
         "code": "CZ",
-        "indicatif": "420"
+        "indicatif": 420
     },
     {
         "name": "Roumanie",
         "code": "RO",
-        "indicatif": "40"
+        "indicatif": 40
     },
     {
         "name": "Royaume-Uni",
         "code": "GB",
-        "indicatif": "44"
+        "indicatif": 44
     },
     {
         "name": "Russie",
         "code": "RU",
-        "indicatif": "7"
+        "indicatif": 7
     },
     {
         "name": "Serbie",
         "code": "RS",
-        "indicatif": "381"
+        "indicatif": 381
     },
     {
         "name": "Slovaquie",
         "code": "SK",
-        "indicatif": "421"
+        "indicatif": 421
     },
     {
         "name": "Slovénie",
         "code": "SI",
-        "indicatif": "386"
+        "indicatif": 386
     },
     {
         "name": "Suède",
         "code": "SE",
-        "indicatif": "46"
+        "indicatif": 46
     },
     {
         "name": "Suisse",
         "code": "CH",
-        "indicatif": "41"
+        "indicatif": 41
     },
     {
         "name": "Ukraine",
         "code": "UA",
-        "indicatif": "380"
+        "indicatif": 380
     },
     {
         "name": "Cité du Vatican",
         "code": "VA",
-        "indicatif": "379"
+        "indicatif": 379
     }
 ]
