@@ -1,3 +1,12 @@
 {
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "intelephense.phpdoc.classTemplate": {
+
+        "summary": "$1",
+        "tags": [
+            "@package ${1:$SYMBOL_NAMESPACE}"
+        ]
+    },
+    "php.validate.executablePath": "E:\\xampp\\php\\php.exe",
+    "php.validate.enable": true
 }

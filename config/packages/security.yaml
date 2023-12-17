@@ -19,6 +19,7 @@ security:
             custom_authenticator:
                 - App\Security\GoogleAuthenticator
                 - App\Security\LoginAuthenticator
+                #- App\Security\FacebookAuthenticator
 
             logout:
                 path: app_logout

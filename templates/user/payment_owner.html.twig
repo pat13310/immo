@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un mode de versement - Titulaire du compte{% endblock %}
+{% block title %}Ajouter un mode de versement - Titulaire du compte
+{% endblock %}
 
 {% block body %}
-
 	<div class="row container w-50 mx-auto">
 		<div class="col-md-12">
 			<section class="mx-auto mb-5">
@@ -16,19 +16,42 @@
 			</section>
 			<section>
 				<label class="mt-2 bold">À qui appartient ce compte ?</label>
-				{{ include('/partials/form/form_payment_method.html.twig') }}
-			</section>
+				<div class='col-md-12'>
+					<div class='form-floating'>
+						<select class="form-select">
+							{% for key,account in accounts %}
+								<option value='{{ key }}'>{{account }}</option>
+							{% endfor %}
+							<option value="0">Ajouter un compte</option>
+						</select>
+						<label>Sélectionnez le compte</label>
+					</div>
+				</div>
+				<div>
+					{{ form_start(accountNameForm) }}
+					<div class='row '>
+						<div class='col-md-12'>
+							<div class='form-floating'>
+								{{ form_widget(accountNameForm.name) }}
+								{{ form_errors(accountNameForm.name) }}
+								{{ form_label(accountNameForm.name) }}
+							</div>
+						</div>
+					</div>
+					<div>
+					<hr>
+						<button type='submit' class='float-end btn btn-dark p-3 mt-2 mb-4 px-4'>Continuer</button>
+					</div>
+					{{ form_end(accountNameForm) }}
+				</section>
+			</div>
+
 		</div>
-	</div>
-{% endblock %}
+	{% endblock %}
 
-{% block js %}
+	{% block js %}
 
-	<script src="{{asset('/build/js/common.js')}}"></script>
-	<script>
-		getCountry("{{ asset('build/data/country.json') }}").then((country) => {
-			loadCountryOnlyToSelect("{{ asset('build/data/country.json') }}", country.name, "payment_method_form_country");
-		});
-	</script>
+		<script src="{{asset('/build/js/common.js')}}"></script>
+		<script></script>
 
-{% endblock %}
+	{% endblock %}
