@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter votre commerce
+{% endblock %}
+
+{% block body %}
+
+	<div class="container d-flex mx-auto w-100">
+
+		<div class="text-center w-100">
+			<h1 class="text-danger">Mettez votre logement sur Airbnb.</h1>
+			<h1>Vous pourriez gagner</h1>
+			<div id="compteur-chiffre" class="bigfont black">896€</div>
+			<div class="f-md">pour 7 jours avec un prix moyen estimé à 94€ par jour</div>
+			<input type="range" id="nbdays" min="0" max="100">
+			<div>
+				<a href="">Découvrez comment nous estimons vos revenus</a>
+			</div>
+		</div>
+
+		<div class="w-100"></div>
+
+	</div>
+{% endblock %}
+
+{% block js %}
+	<script src="{{asset('/build/js/common.js')}}"></script>
+	<script>
+		const range = document.getElementById("nbdays");
+
+range.addEventListener("input", function () {
+const value = (range.value - range.min) / (range.max - range.min) * 100;
+range.style.setProperty("--progress-width", value + "%");
+});
+animerCompteur();
+	</script>
+{% endblock %}

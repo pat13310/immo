@@ -183,17 +183,19 @@ class UserController extends AbstractController
     #[Route('/payment/payout-method', name: 'payment.method')]
     public function payment_method(
         Request $request,
-        Factory $factory,       
+        Factory $factory,
     ): Response {
 
         $user = $this->getUser();
         $langages = $this->getAllLangages();
         $paymentMethodForm = $this->createForm(PaymentMethodFormType::class);
         $paymentMethodForm->handleRequest($request);
+        if ($user === null)
+            return $this->redirectToRoute('app.login');
+
         if ($factory->isValid($paymentMethodForm) && $user) {
-            $data = $paymentMethodForm->getData(); 
-                       
-            return $this->redirectToRoute("user.payment.owner", $data);
+            $data = $paymentMethodForm->getData();
+            return $this->redirectToRoute("user.payment.owner", ['data' => $data]);
         }
         return $this->render('user/payment_method.html.twig', [
             "paymentMethodForm" => $paymentMethodForm->createView(),
@@ -201,34 +203,10 @@ class UserController extends AbstractController
         ]);
     }
 
-   /*  #[Route('/payment/payout-method/add', name: 'payment.method.add')]
-    public function payment_method_add(
-        Request $request,
-        Factory $factory,
-
-    ): Response {
-
-        $user = $this->getUser();
-        dd($request);
-        $paymentMethodForm = $this->createForm(PaymentMethodFormType::class);
-        $paymentMethodForm->handleRequest($request);
-
-        if ($factory->isValid($paymentMethodForm) && $user) {
-            $data = $paymentMethodForm->getData();
-            dd($data);
-            return $this->redirectToRoute('user.payment.owner');
-        }
-
-        return $this->render('user/payment_method_add.html.twig', [
-            "paymentMethodForm" => $paymentMethodForm->createView(),
-        ]);
-    }
- */
     #[Route('/payment/owner', name: 'payment.owner')]
     public function payment_owner(
         Request $request,
         Factory $factory,
-        EntityManagerInterface $em,
         AccountRepository $accountRepository,
     ): Response {
         $user = $this->getUser();
@@ -238,11 +216,13 @@ class UserController extends AbstractController
         $username = "";
         $firstname = "";
 
+        if ($user === null)
+            return $this->redirectToRoute('app.login');
+
         if ($user) {
             $id = $user->getId();
             $username = $user->getName();
             $firstname = $user->getFirstName();
-
             $complete = $username . " " . $firstname;
             $tab[$id] = $complete;
         }
@@ -250,72 +230,52 @@ class UserController extends AbstractController
         $accountNameForm->handleRequest($request);
 
         if ($factory->isValid($accountNameForm) && $user) {
-            $method = $request->get('method');
-            $country = $request->get('country');
+
+            $data_step = $request->get('data');
+            $method = $data_step['method'];
+            $country = $data_step['country'];
+
             $data = $accountNameForm->getData();
 
             $account = $accountRepository->findOneBy(['owner' => $complete]);
             if ($account == null) {
                 $account = new Account();
             }
-
             $account->setOwner($data['name']);
             $account->setType($method);
             $account->setCountry($country);
             $account->setUser($user);
-            //$url=$paypalAuthService->getAuthorizationUrl();
-            //dd($url);
-            return $this->redirectToRoute('user.account.validate',['account'=>$account] );
-            
             //$em->persist($account);
             //$em->flush();
             //$id_account=$account->getId();
+            return $this->redirectToRoute('user.account.validate', ['account' => $account]);
         }
         return $this->render('user/payment_owner.html.twig', [
             "accountNameForm" => $accountNameForm->createView(),
             "accounts" => $tab,
-            //"account" => $account,
         ]);
     }
 
     #[Route('/payment/account/validate', name: 'account.validate')]
     public function owner_validate(
         Request $request,
-        Factory $factory,
         EntityManagerInterface $em,
-        //AccountRepository $accountRepository,
+        
     ): Response {
         $user = $this->getUser();
-        /* $tab = [];
-        $complete = "";
-        $id = 0;
-        $username = "";
-        $firstname = "";
- */
-        /*  if ($user) {
-            $id = $user->getId();
-            $username = $user->getName();
-            $firstname = $user->getFirstName();
-            $complete = $username . " " . $firstname;
-            $tab[$id] = $complete;             
-        } */
-        $accountNameForm = $this->createForm(AccountNameFormType::class);
-        $accountNameForm->handleRequest($request);
-        dd($request);
-        if ($factory->isValid($accountNameForm) && $user) {
-            $account = $request->get('account');
-            dd($account);
-            $data = $accountNameForm->getData();
-            if ($account) {
+        if ($user === null)
+            return $this->redirectToRoute('app.login');
+
+        if ($request->getMethod() == 'POST') {
+            //$account = $request->get('account');
+            // dd($request);
+            /* if ($account) {
                 $em->persist($account);
                 $em->flush();
-            }
+            } */
             //$id_account=$account->getId();
+            return $this->redirectToRoute('user.payment');
         }
-        return $this->render('user/account_validate.html.twig', [
-            "accountNameForm" => $accountNameForm->createView(),
-            //"accounts" => $tab,
-            //"account" => $account,
-        ]);
+        return $this->render('user/account_validate.html.twig', []);
     }
 }

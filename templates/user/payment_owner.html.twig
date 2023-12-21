@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class="row container w-50 mx-auto">
+	<div id ="container" class="row container mx-auto">
 		<div class="col-md-12">
 			<section class="mx-auto mb-5">
 				<a href="/user/dashboard">
@@ -28,18 +28,20 @@
 					</div>
 				</div>
 				<div>
-					{{ form_start(accountNameForm) }}
-					<div class='row '>
-						<div class='col-md-12'>
-							<div class='form-floating'>
-								{{ form_widget(accountNameForm.name) }}
-								{{ form_errors(accountNameForm.name) }}
-								{{ form_label(accountNameForm.name) }}
+					<div class="collapse" id="form-panel">
+						{{ form_start(accountNameForm) }}
+						<div class='row '>
+							<div class='col-md-12'>
+								<div class='form-floating'>
+									{{ form_widget(accountNameForm.name) }}
+									{{ form_errors(accountNameForm.name) }}
+									{{ form_label(accountNameForm.name) }}
+								</div>
 							</div>
 						</div>
 					</div>
 					<div>
-					<hr>
+						<hr>
 						<button type='submit' class='float-end btn btn-dark p-3 mt-2 mb-4 px-4'>Continuer</button>
 					</div>
 					{{ form_end(accountNameForm) }}
@@ -52,6 +54,39 @@
 	{% block js %}
 
 		<script src="{{asset('/build/js/common.js')}}"></script>
-		<script></script>
+		<script>
+
+			let owner = document.querySelector('#account_name_form_name');
+let panel = document.querySelector('#form-panel');
+let selectAccount = document.querySelectorAll('.form-select')[0];
+let btn = document.querySelector("button");
+
+let text = selectAccount.options[0].text;
+owner.value = text;
+
+		selectAccount.addEventListener("change", (event) => {
+		
+			let text = selectAccount.options[selectAccount.selectedIndex].text;
+
+			if (event.target.value == 0) {
+				panel.classList.remove("collapse");
+				owner.value = "";
+				btn.disabled = true;
+				owner.focus();
+			} else {
+				panel.classList.add("collapse");
+				owner.value = text;
+				btn.disabled = false;
+			}
+		});
+
+		owner.addEventListener("input", (event) => {
+			if (event.target.value.length === 0) {
+				btn.disabled = true;
+			} else {
+				btn.disabled = false;
+			}
+		});
+		</script>
 
 	{% endblock %}

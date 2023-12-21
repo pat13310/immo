@@ -6,6 +6,9 @@
 :root {
   --bs-link-color-rgb: black !important; /* Définissez la couleur RGB souhaitée */
   --bs-link-hover-color-rgb: #e61e4f !important;
+  --progress-width: 50%;
+  --progress-height: 4px;
+  --thumb_dim: 25px;
 }
 
 a {
@@ -180,16 +183,16 @@ input[type="radio"] {
   }
 }
 
-.form-check > input[type="radio"]{
+.form-check > input[type="radio"] {
   &:checked {
-  background-color: black !important;
-  border-color: #1d1c1c !important;
-  color: black !important;
+    background-color: black !important;
+    border-color: #1d1c1c !important;
+    color: black !important;
   }
-  &:focus{
-    border-color: white!important;
+  &:focus {
+    border-color: white !important;
     outline: 0;
-    box-shadow: 0 0 0 0.05rem rgb(238, 3, 3)!important;
+    box-shadow: 0 0 0 0.05rem rgb(238, 3, 3) !important;
   }
 }
 
@@ -200,3 +203,95 @@ input[type="radio"] {
   font-weight: 800;
   margin-right: 0.5em;
 }
+
+/* Styles généraux pour l'input range */
+input[type="range"] {
+  -webkit-appearance: none; /* Supprimer le style par défaut pour WebKit */
+  width: 50%; /* Ajuster la largeur selon vos besoins */
+  height: 10px; /* Ajuster la hauteur selon vos besoins */
+  margin: 0;
+  position: relative;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Supprimer le style par défaut pour WebKit */
+    width: var(--thumb_dim); /* Ajuster la largeur du thumb */
+    height: var(--thumb_dim); /* Ajuster la hauteur du thumb */
+    background-color: black; /* Couleur du thumb */
+    border: 1px solid #ddd; /* Bordure optionnelle du thumb */
+    border-radius: 50%; /* Bordure arrondie pour un aspect circulaire */
+    cursor: pointer; /* Curseur au survol du thumb */
+    z-index: 2; /* Mettre le thumb au-dessus du pseudo-élément */
+    margin-top: calc((-0.45 * var(--thumb_dim)));
+  }
+
+  &::-moz-range-thumb {
+    width: 20px; /* Ajuster la largeur du thumb */
+    height: 20px; /* Ajuster la hauteur du thumb */
+    background-color: black; /* Couleur du thumb */
+    border: 1px solid #ddd; /* Bordure optionnelle du thumb */
+    border-radius: 50%; /* Bordure arrondie pour un aspect circulaire */
+    cursor: pointer; /* Curseur au survol du thumb */
+    z-index: 2; /* Mettre le thumb au-dessus du pseudo-élément */
+  }
+
+  &::-ms-thumb {
+    width: 20px; /* Ajuster la largeur du thumb */
+    height: 20px; /* Ajuster la hauteur du thumb */
+    background-color: black; /* Couleur du thumb */
+    border: 1px solid #ddd; /* Bordure optionnelle du thumb */
+    border-radius: 50%; /* Bordure arrondie pour un aspect circulaire */
+    cursor: pointer; /* Curseur au survol du thumb */
+    z-index: 2; /* Mettre le thumb au-dessus du pseudo-élément */
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: var(--progress-height); /* Ajuster la hauteur de la piste */
+    border-radius: 1px; /* Bordure arrondie pour un aspect plus doux */
+    top: 2px; /* Aligner au sommet */
+    width: calc(
+      var(--progress-width) - 1px
+    ); /* Ajuster la moitié de la largeur de la piste moins la moitié de la largeur du thumb */
+    background-color: #000000; /* Couleur noire pour la progression */
+    z-index: 1; /* Mettre le pseudo-élément en dessous du thumb */
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%; /* Ajuster la largeur de la piste */
+    height: var(--progress-height); /* Ajuster la hauteur de la piste */
+    background-color: #ddd; /* Couleur de la piste (gris dans cet exemple) */
+    border-radius: 1px; /* Bordure arrondie pour un aspect plus doux */
+    position: relative;
+  }
+
+  &::-moz-range-track {
+    width: 100%; /* Ajuster la largeur de la piste */
+    height: var(--progress-height); /* Ajuster la hauteur de la piste */
+    background-color: #ddd; /* Couleur de la piste (gris dans cet exemple) */
+    border-radius: 5px; /* Bordure arrondie pour un aspect plus doux */
+    position: relative;
+  }
+  &::-ms-fill-upper {
+    background: black;
+  }
+  &::-moz-range-progress {
+    background-color: #000000;
+  }
+  &::-ms-track {
+    width: 100%; /* Ajuster la largeur de la piste */
+    height: var(--progress-height); /* Ajuster la hauteur de la piste */
+    background-color: #ddd; /* Couleur de la piste (gris dans cet exemple) */
+    border-radius: 5px; /* Bordure arrondie pour un aspect plus doux */
+    position: relative;
+  }
+
+  /* Autres styles de votre input range selon vos besoins */
+}
+
+.bigfont {
+  font-size: 76px !important;
+  font-weight: 800;
+}
+
+/* Styles généraux pour l'input range */

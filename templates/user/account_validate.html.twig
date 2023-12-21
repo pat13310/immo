@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class="row container w-50 mx-auto">
+	<div id ="container" class="row container mx-auto">
 		<div class="col-md-12">
 			<section class="mx-auto mb-5">
 				<a href="/user/dashboard">
@@ -18,9 +18,9 @@
 				<label class="mt-2 bold mb-3">Voulez-vous valider ce compte maintenant?</label>
 				<div class='col-md-12'>
 					<hr>
-					<form>
+					<form method="POST" >
 						<div>
-							<button type='submit' class='btn btn-outline-dark p-3 mt-2 mb-4 px-5'>Plus tard</button>
+							<a href="{{ path('user.payment') }}" type='button' class='btn btn-outline-dark p-3 mt-2 mb-4 px-5'>Plus tard</a>
 							<button type='submit' class='btn btn-dark p-3 mt-2 mb-4 px-5 float-end'>Valider</button>
 						</div>
 					</form>

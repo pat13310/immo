@@ -166,3 +166,40 @@ const maskExpireOptions = {
   lazy: false, // rendre placeholder toujours visible
   //placeholderChar: '_'
   };
+
+
+  function animerCompteur(cible=9999, tag="compteur-chiffre", delay=3500) {
+    const compteurChiffre = document.getElementById(tag);
+    const tempsAnimation = delay;
+  
+    function easeInOutCubic(x) {
+      return x < 0.5
+        ? 4 * x * x * x
+        : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    }
+  
+    const startTime = performance.now();
+  
+    function incrementerCompteur(timestamp) {
+      const elapsedTime = timestamp - startTime;
+      const progress = Math.min(elapsedTime / tempsAnimation, 1);
+      const easedProgress = easeInOutCubic(progress);
+      const chiffreActuel = Math.floor(easedProgress * cible);
+  
+      // Ajout du formatage sur 4 chiffres
+      const chiffreFormate = chiffreActuel.toString().padStart(4, '0');
+  
+      compteurChiffre.textContent = chiffreFormate;
+  
+      if (progress < 1) {
+        requestAnimationFrame(incrementerCompteur);
+      } else {
+        compteurChiffre.textContent = cible.toString().padStart(4, '0');
+      }
+    }
+  
+    requestAnimationFrame(incrementerCompteur);
+  }
+  
+  
+  

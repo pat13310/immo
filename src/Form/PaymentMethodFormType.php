@@ -14,12 +14,12 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class PaymentMethodFormType extends AbstractType
 {
-    private $tab=[];
+    private $tab = [];
     public function __construct(
         private  Security $security,
         JsonService $jsonService,
     ) {
-        $this->tab=$jsonService->getCountries('build/data/country.json');
+        $this->tab = $jsonService->getCountries('build/data/country.json');
         //dd($this->tab);
     }
 
@@ -27,23 +27,23 @@ class PaymentMethodFormType extends AbstractType
     {
         $builder
             ->add('country', ChoiceType::class, [
-                'choices'=>$this->tab,                   
+                'choices' => $this->tab,
                 'required' => false,
                 'row_attr' => ['class' => 'form-floating'],
                 'attr' => [
                     'class' => 'form-select my-2',
                     'placeholder' => ''
                 ],
-                /* 'constraints' => [
+                'constraints' => [
                     new Callback([
                         'callback' => [$this, 'validateCodeExists'],
-                    ]),                   
-                ], */
+                    ]),
+                ],
                 'label_attr' => ['class' => 'form-label gray'],
                 'label' => 'Pays/Région de la facturation',
             ])
             ->add('method', ChoiceType::class, [
-             'choices' => [
+                'choices' => [
                     'Compte bancaire en EUR' => '0',
                     'PayPal en EUR' => '1',
                     'PayPal en USD' => '2',
@@ -52,7 +52,7 @@ class PaymentMethodFormType extends AbstractType
                 'constraints' => [
                     new Callback([
                         'callback' => [$this, 'validateChoiceExists'],
-                    ]),                   
+                    ]),
                 ],
                 'expanded' => true, // Ceci rend le champ sous forme de boutons radio
                 'multiple' => false, // Un seul choix possible
@@ -61,9 +61,7 @@ class PaymentMethodFormType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            
-        ]);
+        $resolver->setDefaults([]);
     }
 
     public function validateCodeExists($value, ExecutionContextInterface $context)
@@ -73,13 +71,12 @@ class PaymentMethodFormType extends AbstractType
         $codeExists = false;
         $error = false;
 
-        /* if (strlen($value) == 0) {
-            $context->buildViolation('Le code pays est absent.')
+        if (strlen($value) == 0) {
+            $context->buildViolation('Le code pays pour la facturation est absent.')
                 ->addViolation();
             $error = true;
             return;
-        } */
-    
+        }
     }
     public function validateChoiceExists($value, ExecutionContextInterface $context)
     {
@@ -94,6 +91,5 @@ class PaymentMethodFormType extends AbstractType
             $error = true;
             return;
         }
-            
     }
 }
