@@ -70,6 +70,10 @@ body {
   top: 50px;
 }
 
+.red{
+  color:var(--red);
+}
+
 .black{
   color:black;
 }
@@ -377,7 +381,7 @@ body {
   right: 20px;
   border-radius: 8px;
   box-shadow: 1px 1px 4px #0000005e;
-  padding: 20px 0;
+  padding: 15px 0;
   z-index: 9;
   background: white;
   font-family: inherit;
@@ -385,7 +389,7 @@ body {
 }
 
 .menu-log a {
-  padding: 7px 12px;
+  padding: 2px 12px;
   margin: 8px 5px;
   display: block;
   text-decoration: none;

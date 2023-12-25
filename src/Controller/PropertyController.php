@@ -10,8 +10,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PropertyController extends AbstractController
 {
+    #[Route('/home', name: 'home')]
+    public function home(): Response
+    {
+        return $this->render('property/add.html.twig', [
+            'controller_name' => 'PropertyController',
+        ]);
+    }
     #[Route('/add', name: 'add')]
-    public function index(): Response
+    public function add(): Response
     {
         return $this->render('property/add.html.twig', [
             'controller_name' => 'PropertyController',

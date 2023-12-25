@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Form\RegistrationFormType;
-use App\Repository\DeviseRepository;
-use App\Repository\LangagesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +19,9 @@ class HomeController extends AbstractController
         if ($login===null){
             $login="hide";            
         }
+
+        $auth=$this->isGranted('IS_AUTHENTICATED_FULLY');
+        
         
         $langages = $this->langagesRepository->findAllLangages();
         $favorites = $this->langagesRepository->findFavorites();
@@ -38,8 +39,8 @@ class HomeController extends AbstractController
             'devises' => $devises,
             'login'=>$login,
             'registrationForm'=>$formMail,
+            'auth'=>$auth,
         ]);
     }
 
-  
 }

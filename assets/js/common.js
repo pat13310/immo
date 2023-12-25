@@ -12,7 +12,7 @@ async function fetchDataPhone(file) {
   }
 }
 
-async function fetchCountry(file="https://ip-api.io/json") {
+async function fetchCountry(file = "https://ip-api.io/json") {
   fetch(file, {
     method: "GET",
   })
@@ -29,7 +29,7 @@ async function fetchCountry(file="https://ip-api.io/json") {
     });
 }
 
-async function fetchIPAddress(file="https://api.ipify.org?format=json") {
+async function fetchIPAddress(file = "https://api.ipify.org?format=json") {
   return new Promise((resolve, reject) => {
     fetch(file)
       .then((response) => response.json())
@@ -120,7 +120,7 @@ function loadCountryOnlyToSelect(
   tagId = "countryOnlySelect",
   isOnlyCountry = true
 ) {
-    fetchDataPhone(file).then((data) => {
+  fetchDataPhone(file).then((data) => {
     if (data) {
       // Ici, vous pouvez utiliser les données JSON récupérées
       // Par exemple, vous pouvez créer et remplir le select avec ces données
@@ -143,63 +143,56 @@ function loadCountryOnlyToSelect(
   });
 }
 
-
 // Telephone
 const maskTelOptions = {
-  mask: '+00[0] 0 00 00 00 00',	
+  mask: "+00[0] 0 00 00 00 00",
   lazy: false, // rendre placeholder toujours visible
-  placeholderChar: 'X'
-  };
+  placeholderChar: "X",
+};
 
-
- // Carte CB
+// Carte CB
 const maskCardOptions = {
-  mask: '0000 0000 0000 0000',	
+  mask: "0000 0000 0000 0000",
   lazy: false, // rendre placeholder toujours visible
   //placeholderChar: '0'
-  };
+};
 
-
-   // Date MM/AA
+// Date MM/AA
 const maskExpireOptions = {
-  mask: '00/00',	
+  mask: "00/00",
   lazy: false, // rendre placeholder toujours visible
   //placeholderChar: '_'
-  };
+};
 
+function animerCompteur(cible = 9999, tag = "compteur-chiffre", delay = 2000) {
+  const compteurChiffre = document.getElementById(tag);
+  const tempsAnimation = delay;
 
-  function animerCompteur(cible=9999, tag="compteur-chiffre", delay=3500) {
-    const compteurChiffre = document.getElementById(tag);
-    const tempsAnimation = delay;
-  
-    function easeInOutCubic(x) {
-      return x < 0.5
-        ? 4 * x * x * x
-        : 1 - Math.pow(-2 * x + 2, 3) / 2;
-    }
-  
-    const startTime = performance.now();
-  
-    function incrementerCompteur(timestamp) {
-      const elapsedTime = timestamp - startTime;
-      const progress = Math.min(elapsedTime / tempsAnimation, 1);
-      const easedProgress = easeInOutCubic(progress);
-      const chiffreActuel = Math.floor(easedProgress * cible);
-  
-      // Ajout du formatage sur 4 chiffres
-      const chiffreFormate = chiffreActuel.toString().padStart(4, '0');
-  
-      compteurChiffre.textContent = chiffreFormate;
-  
-      if (progress < 1) {
-        requestAnimationFrame(incrementerCompteur);
-      } else {
-        compteurChiffre.textContent = cible.toString().padStart(4, '0');
-      }
-    }
-  
-    requestAnimationFrame(incrementerCompteur);
+  function easeInOutCubic(x) {
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
   }
-  
-  
-  
+
+  const startTime = performance.now();
+
+  function incrementerCompteur(timestamp) {
+    const elapsedTime = timestamp - startTime;
+    let progress = Math.min((elapsedTime * 3) / tempsAnimation, 1);
+    let easedProgress = easeInOutCubic(Math.abs(progress));
+    if (easedProgress <= 0) easedProgress = 0.025;
+    const chiffreActuel = Math.floor(easedProgress * cible);
+
+    // Ajout du formatage sur 4 chiffres
+    const chiffreFormate = chiffreActuel.toString().padStart(2, "0") + " €";
+
+    compteurChiffre.textContent = chiffreFormate;
+
+    if (progress < 1) {
+      requestAnimationFrame(incrementerCompteur);
+    } else {
+      compteurChiffre.textContent = cible.toString().padStart(2, "0") + " €";
+    }
+  }
+
+  requestAnimationFrame(incrementerCompteur);
+}
+

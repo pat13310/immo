@@ -9,8 +9,7 @@
 {%  block body %}
 
 	{{include("partials/modal_langages.html.twig") }}
-	{{include("partials/modal_login.html.twig") }}
-	
+	{{include("partials/modal_login.html.twig") }}	
 
 	<header>
 		<div class="menu-header">
@@ -37,19 +36,14 @@
 			<div id="global" data-toggle="modal" data-target="#myModal">
 				<i class="fa-solid fa-globe"></i>
 			</div>
-			<button class="log">
+			<div class="log" id="btnLogin" onclick="onShowMenuLogin()">
 				<i class="fa-solid fa-bars"></i>
 				&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewbox="-4 -3 36 36" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 100%; width: 100%; fill: currentcolor;">
 					<path d="M16 .7C7.56.7.7 7.56.7 16S7.56 31.3 16 31.3 31.3 24.44 31.3 16 24.44.7 16 .7zm0 28c-4.02 0-7.6-1.88-9.93-4.81a12.43 12.43 0 0 1 6.45-4.4A6.5 6.5 0 0 1 9.5 14a6.5 6.5 0 0 1 13 0 6.51 6.51 0 0 1-3.02 5.5 12.42 12.42 0 0 1 6.45 4.4A12.67 12.67 0 0 1 16 28.7z"></path>
 				</svg>
-				<div class="menu-log collapse">
-					<a class="first link-login" href="#" id="connect">Connexion</a>
-					<a href="#" id="signup">Inscription</a>
-					<a href="/property/add">Mettre son commerce sur Immo</a>
-					<hr>
-					<a href="/help">Aide</a>
+				<div class="menu-log collapse" >				
 				</div>
-			</button>
+			</div>
 		</div>
 	</div>
 	<div class="sp-10"></div>
@@ -93,16 +87,18 @@
 	<script src="https://unpkg.com/imask"></script>
 	
 	<script>
+		let auth={{ auth==1?1:0}};
 		// Les modales
 		let _modal_login=document.getElementById('modal-login');
 		let myGlobal = new bootstrap.Modal(document.getElementById('modal-global'));
 		let myLogin = new bootstrap.Modal(_modal_login);
 		let myRegister = new bootstrap.Modal(document.getElementById('modal-register'));
 		
-		let btnLog = document.querySelector('.log');
-		let menuLog = document.querySelector('.menu-log');
-		let registerLog = document.querySelector('#signup');
-		let loginLog = document.querySelector('#connect');
+		const btnLogin = document.getElementById("btnLogin");
+		const menuLog = document.querySelector(".menu-log");
+
+		const registerLog = document.getElementById("signup");
+		const connectLogin = document.getElementById("connect");
 
 		const btn_mail = document.querySelector("#mail");
 		const btn_phone = document.querySelector("#phone");
@@ -110,7 +106,37 @@
 		const input_mail = document.querySelector("#pan-mail");
 		const input_birthday = document.querySelector("#registration_form_birthday");
 		
-		// Date de naissance
+        function onShowMenuLogin(){
+			menuLog.classList.toggle('collapse');
+			menuLog.classList.toggle('active');
+		}
+
+		function createMenuLogin(auth, elem) {
+			if (auth==1) {
+				elem.innerHTML = `
+						<a href='/user/message/list' >Messages</a>
+						<a href='/rent/list'>Locations</a>
+						<a href='/favorites/list'>Favoris</a>
+						<hr>
+						<a href="/property/home">Mettre son bien sur Immo</a>
+						<a href="/user/refer">Parrainer un hôte</a>
+						<a href="/user/dashboard" id="account">Compte</a>
+						<hr>
+						<a href="/help">Centre d'aide</a>
+						<a class="first link-login" href="/logout" id="disconnect" >Déconnexion</a>	`
+			} else {
+				elem.innerHTML = `
+						<a class="first link-login" href="javascript:onAction('connect')" id="connect" >Connexion</a>
+						<a href="javascript:onAction('signup')" id="signup" >Inscription</a>
+						<a href="/property/home">Mettre son bien sur Immo</a>
+						<hr>
+						<a href="/help">Aide</a>`
+			}
+		}
+				
+		createMenuLogin(auth,menuLog);
+
+		{# // Date de naissance
 		const maskDateOptions = {
 		mask: "0[0]-0[0]-0000",
 		lazy: true,
@@ -126,27 +152,19 @@
 		if (mask==null){			
 			mask = IMask(input_birthday, maskDateOptions);			
 		}
+		 #}
 
-		btnLog.addEventListener("click", () => {
-			menuLog.classList.toggle('collapse');
-			menuLog.classList.toggle('active');
-		});
-
-		registerLog.addEventListener("click", () => {
+		{# registerLog.addEventListener("click", () => {
 			registerLog.classList.add('first');
-			loginLog.classList.remove('first');
+			connectLogin.classList.remove('first');
 			myRegister.show();
 		});
-
-		loginLog.addEventListener("click", () => {
-			loginLog.classList.add('first');
-			registerLog.classList.remove('first');
-			myLogin.show();
-		});
-
-		{% if login == "show" %}
+#}	
+		
+ 		{% if login == "show" %}
 			myLogin.show();
 		{% endif %}
+
 
 		selectPanel(panels_sel);
 		selectPanel(panels_fav, "selected");
@@ -164,10 +182,18 @@
 			myGlobal.show();
 		});
 
-		anywhere.addEventListener("click", () => {
-			console.log("You clicked");
-		});
-
+        function onAction(action){
+			console.log(action);
+			switch(action){ 	
+				case 'connect':
+					myLogin.show();
+				break;
+				case 'signup':
+					myRegister.show();
+				break;
+			}
+		}
+		
 		getCountry("{{ asset('build/data/country.json') }}").then((country) => {
 				loadCountryOnlyToSelect("{{ asset('build/data/country.json') }}", country.name, "countrySelect",false);
 				});
