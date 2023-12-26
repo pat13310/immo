@@ -52,7 +52,7 @@ function findLangageSelected() {
   }
 }
 
-function onAction(action) {
+function onPanelAction(action) {
   showInput(action);
   switch (action) {
     case "facebook":

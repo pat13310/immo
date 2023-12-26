@@ -1,7 +1,9 @@
 @import "~bootswatch/dist/sandstone/variables";
 @import "~bootswatch/dist/sandstone/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.css";
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 @import "media.scss";
+@import "common.scss";
 
 :root {
   --bs-link-color-rgb: black !important; /* Définissez la couleur RGB souhaitée */
@@ -15,6 +17,16 @@ a {
   color: var(--bs-link-color-rgb);
   text-decoration: underline;
   font-weight: 600;
+}
+
+h5, .h5 {
+  font-size: 1rem;
+  font-weight: 800;
+  color:#3a3a3a;
+}
+
+.modal-body {
+  padding: 2rem 1rem;
 }
 
 .btn-danger {
@@ -88,7 +100,7 @@ a {
 
 .nav-tabs .nav-link:hover {
   margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
-  background-color: #eaeaea !important;
+  background-color: #e3d6d6 !important;
   border-radius: 4px;
   margin: 4px;
 }

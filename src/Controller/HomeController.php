@@ -16,6 +16,7 @@ class HomeController extends AbstractController
     public function index(Request $request,  Factory $factory): Response
     {
         $login = $request->query->get('login');
+        $error = $request->query->get('error');
         if ($login===null){
             $login="hide";            
         }
@@ -33,6 +34,7 @@ class HomeController extends AbstractController
         if ($factory->isValid($formMail)){
             
         }
+        
         return $this->render('home/index.html.twig', [
             'langages' => $langages,
             'favorites' => $favorites,
@@ -40,6 +42,7 @@ class HomeController extends AbstractController
             'login'=>$login,
             'registrationForm'=>$formMail,
             'auth'=>$auth,
+            'error'=>$error,
         ]);
     }
 

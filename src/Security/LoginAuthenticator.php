@@ -74,11 +74,11 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         return new RedirectResponse($this->urlGenerator->generate('app.home'));
     }
 
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
-    {        
-        return new RedirectResponse($this->urlGenerator->generate('app.home'),302, ["login"=>"show","error"=>$exception->getMessage()]);
+   /*  public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
+    {  
+        return new RedirectResponse($this->urlGenerator->generate('app.home',["login"=>"show","error"=>$exception]));
     }
-
+ */
 
     protected function getLoginUrl(Request $request): string
     {

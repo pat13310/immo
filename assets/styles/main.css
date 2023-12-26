@@ -2,6 +2,7 @@
   --red: #e41d56;
   --red2: rgba(169, 169, 169, 0.93);
   --primary-clr: rgba(232, 197, 250, 0.85);
+  --black:black;
 }
 
 @font-face {
@@ -75,7 +76,7 @@ body {
 }
 
 .black{
-  color:black;
+  color:var(--black)!important;
 }
 
 .gray {
@@ -269,7 +270,7 @@ body {
   display: flex;
   align-items: center;
   gap: 22px;
-  /*justify-content: space-between;*/
+  justify-content: space-between;
 }
 
 .ms-1 {
@@ -519,4 +520,13 @@ body {
   font-size: 1.15em;
   color:black;
   margin-left: -15px;
+}
+
+
+.toggle-password {
+  cursor: pointer;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
 }

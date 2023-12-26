@@ -196,3 +196,13 @@ function animerCompteur(cible = 9999, tag = "compteur-chiffre", delay = 2000) {
   requestAnimationFrame(incrementerCompteur);
 }
 
+function togglePasswordVisibility(elem) {
+  let el=elem.parentElement.children[0];
+  if (el.type === "password") {
+    el.type = "text";
+    elem.innerHTML = "<i class='bi bi-eye-slash'></i>";
+  } else {
+    el.type = "password";
+    elem.innerHTML = "<i class='bi bi-eye'></i>";
+  }
+}

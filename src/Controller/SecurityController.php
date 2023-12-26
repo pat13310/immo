@@ -10,8 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Form\RegistrationFormType;
 
 class SecurityController extends AbstractController
 {
@@ -33,8 +31,9 @@ class SecurityController extends AbstractController
         //if ($error)
         //    dd($error);
         // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-        return $this->redirectToRoute('app.home', ['error' => $error]);
+        //dd($error);
+        //$lastUsername = $authenticationUtils->getLastUsername();
+        return $this->redirectToRoute('app.home', ['login'=>'show','error' => $error]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
