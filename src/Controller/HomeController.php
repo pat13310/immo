@@ -17,6 +17,7 @@ class HomeController extends AbstractController
     {
         $login = $request->query->get('login');
         $error = $request->query->get('error');
+        
         if ($login===null){
             $login="hide";            
         }
