@@ -9,25 +9,26 @@
 			</div>
 			<div class="modal-body">
 				<form id="form_login" name="form_login" method="post" action="/login">
-					<h4><b>Bienvenue sur Immo</b></h4>
+					<h4>
+						<b>Bienvenue sur Immo</b>
+					</h4>
 					{% if error %}
-					
-					
-        			<div class="alert alert-danger">{{ error|trans([error], "security") }}</div>
-    				
-    				{% endif %}
-					<div id="pan-mail" >
+						<div class="alert alert-danger">{{ error|trans([error], "security") }}</div>
+					{% endif %}
+					<div id="pan-mail">
 						<div class="form-floating">
 							<input class="mt-3 mb-3 form-control" id="inputEmail" name="email" type="text" placeholder="ex: dupond@mail.fr" autofocus/>
-							<label for="inputEmail">Adresse e-mail</label>						
+							<label for="inputEmail">Adresse e-mail</label>
 						</div>
 						<div class="form-floating">
 							<input type="password" name="password" id="inputPassword" class="form-control mb-3" autocomplete="current-password" placeholder=""/>
 							<label for="inputPassword">Mot de passe</label>
-							<span class="toggle-password" onclick="togglePasswordVisibility(this)"><i class="bi bi-eye"></i></span>
+							<span class="toggle-password" onclick="togglePasswordVisibility(this)">
+								<i class="bi bi-eye"></i>
+							</span>
 						</div>
 					</div>
-					<div id="pan-tel" >
+					<div id="pan-tel">
 						<select class="mt-3 form-control" id="countrySelect" name="country"></select>
 						<input class="mt-3 mb-3 form-control" id="inputPhone" name="phone" type="text" placeholder="Numéro de téléphone"/>
 					</div>
@@ -58,7 +59,7 @@
 					</div>
 					<div class="col">Continuer avec Téléphone</div>
 				</div>
-				<div onclick="onPanelAction('mail');" href="#" role="button"  class="ms-0 row d-flex btn btn-light w-100 mb-3 py-3"  id="mail">
+				<div onclick="onPanelAction('mail');" href="#" role="button" class="ms-0 row d-flex btn btn-light w-100 mb-3 py-3" id="mail">
 					<div class="col-1 ">
 						<i class="ic fas fa-envelope fa-xl"></i>
 					</div>
