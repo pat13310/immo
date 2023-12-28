@@ -17,9 +17,9 @@ security:
             lazy: true
             provider: app_user_provider
             custom_authenticator:
-                - App\Security\GoogleAuthenticator
                 - App\Security\LoginAuthenticator
-                #- App\Security\FacebookAuthenticator
+                - App\Security\GoogleAuthenticator
+                - App\Security\FacebookAuthenticator
 
             logout:
                 path: app_logout
@@ -46,6 +46,7 @@ security:
         #- { path: ^/http://ip-api.com/json, ip: 176.173.18.124 }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/user, roles: ROLE_USER }
+        - { path: ^/facebook, roles: PUBLIC_ACCESS }
 
 when@test:
     security:

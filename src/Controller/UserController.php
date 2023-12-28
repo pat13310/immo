@@ -42,6 +42,7 @@ class UserController extends AbstractController
     #[Route('/infos', name: 'infos')]
     public function infos(Request $request, Factory $factory, EntityManagerInterface $em): Response
     {
+
         $user = $this->getUser();
 
         $formName = $this->createForm(FormNameType::class);
@@ -91,6 +92,7 @@ class UserController extends AbstractController
         CardRepository $cardRepository,
         ExtraRepository $couponRepo,
     ): Response {
+         /** @var  User $user **/
         $user = $this->getUser();
         $paymentForm = $this->createForm(PaymentFormType::class);
         $paymentForm->handleRequest($request);
@@ -155,6 +157,7 @@ class UserController extends AbstractController
         EntityManagerInterface $em,
         ExtraRepository  $giftRepository
     ): Response {
+         /** @var  User $user **/
         $user = $this->getUser();
         $giftForm = $this->createForm(GiftFormType::class);
         $giftForm->handleRequest($request);
@@ -209,6 +212,7 @@ class UserController extends AbstractController
         Factory $factory,
         AccountRepository $accountRepository,
     ): Response {
+         /** @var User $user **/
         $user = $this->getUser();
         $tab = [];
         $complete = "";

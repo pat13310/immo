@@ -6,6 +6,16 @@ knpu_oauth2_client:
             client_secret: '%env(resolve:GOOGLE_SECRET)%'
             redirect_route: google.check
             redirect_params: {}
+        facebook:
+            # this will be one of the supported types
+            type: facebook
+            client_id: '%env(OAUTH_FACEBOOK_ID)%'
+            client_secret: '%env(OAUTH_FACEBOOK_SECRET)%'
+            # the route that you're redirected to after
+            # see the controller example below
+            redirect_route: facebook.check
+            redirect_params: {}
+            graph_api_version: v18.0 #v2.12
         paypal:
             # must be "paypal" - it activates that type!
             type: paypal
