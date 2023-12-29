@@ -14,7 +14,8 @@ class FacebookController extends AbstractController
     #[Route('/connect', name: 'connect')]
     public function facebook_connect(ClientRegistry $clientRegistry): Response
     {
-        return $clientRegistry->getClient('facebook')->redirect([], []);
+        $permissions = ['user_birthday', "email", "profil_public"];
+        return $clientRegistry->getClient('facebook')->redirect([], $permissions);
     }
     
     #[Route('/check', name: 'check')]

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 trait CreatedAtTrait {
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?\DateTime $createdAt = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTime $updatedAt = null;
@@ -17,14 +17,20 @@ trait CreatedAtTrait {
     private ?\DateTime $deletedAt = null;
 
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(?\DateTime $createdAt=null): self
     {
-        $this->createdAt = $createdAt;
+        if ($this->createdAt ===null)
+            $this->createdAt = new \DateTime('now');
+        else
+            $this->createdAt = $createdAt;
+
+        $this->setUpdatedAt($this->createdAt);
+
         return $this;
     }
 

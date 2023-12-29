@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
@@ -45,8 +46,9 @@ class FacebookAuthenticator extends OAuth2Authenticator
             new UserBadge($accessToken->getToken(), function() use ($accessToken, $client) {
                 /** @var FacebookUser $facebookUser */
                 $facebookUser = $client->fetchUserFromToken($accessToken);
-                dd($facebookUser);    
+                //dd($facebookUser);    
                 $email = $facebookUser->getEmail();
+                
 
                 // 1) have they logged in with Facebook before? Easy!
                 $existingUser = $this->entityManager->getRepository(User::class)->findOneBy(['socialId' => $facebookUser->getId()]);
@@ -62,12 +64,15 @@ class FacebookAuthenticator extends OAuth2Authenticator
 
                 // 3) Maybe you just want to "register" them by creating
                 // a User object
+                $user->setCreatedAt();
+                
                 $user->setSocialId($facebookUser->getId());
                 $user->setName($facebookUser->getLastName());
                 $user->setFirstName($facebookUser->getFirstName());
                 $user->setEmail($facebookUser->getEmail());
-                $user->setPassword("password");
+                $user->setPassword("nopassword");
                 $user->setRoles(["ROLE_USER"]);
+                $user->setAvatar($facebookUser->getPictureUrl());
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
 
