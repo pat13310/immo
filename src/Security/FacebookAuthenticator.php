@@ -49,29 +49,24 @@ class FacebookAuthenticator extends OAuth2Authenticator
                 //dd($facebookUser);    
                 $email = $facebookUser->getEmail();
                 
-
                 // 1) have they logged in with Facebook before? Easy!
                 $existingUser = $this->entityManager->getRepository(User::class)->findOneBy(['socialId' => $facebookUser->getId()]);
 
                 if ($existingUser) {
                     return $existingUser;
                 }
-
                 // 2) do we have a matching user by email?
                 /** @var User $user **/
                 $user=new User();
                 //$user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
 
                 // 3) Maybe you just want to "register" them by creating
-                // a User object
-                $user->setCreatedAt();
-                
+                // a User object                
                 $user->setSocialId($facebookUser->getId());
                 $user->setName($facebookUser->getLastName());
                 $user->setFirstName($facebookUser->getFirstName());
                 $user->setEmail($facebookUser->getEmail());
-                $user->setPassword("nopassword");
-                $user->setRoles(["ROLE_USER"]);
+                $user->setPassword("nopassword");                
                 $user->setAvatar($facebookUser->getPictureUrl());
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
