@@ -66,7 +66,7 @@ class FacebookAuthenticator extends OAuth2Authenticator
                 $user->setName($facebookUser->getLastName());
                 $user->setFirstName($facebookUser->getFirstName());
                 $user->setEmail($facebookUser->getEmail());
-                $user->setPassword("nopassword");                
+                $user->setPassword("auth_facebook");                
                 $user->setAvatar($facebookUser->getPictureUrl());
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
@@ -81,8 +81,7 @@ class FacebookAuthenticator extends OAuth2Authenticator
         // change "app_homepage" to some route in your app
         $targetUrl = $this->router->generate('app.home');
 
-        return new RedirectResponse($targetUrl);
-    
+        return new RedirectResponse($targetUrl);    
         // or, on success, let the request continue to be handled by the controller
         //return null;
     }

@@ -475,3 +475,25 @@ a {
   padding: 10px;
 }
 
+.card-panel{
+  position: relative;
+  background:linear-gradient(90deg, gray, darkgray);
+  width:250px;
+  height:250px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.33);
+  &:hover{
+    border: 1px solid black;
+    box-shadow: 1px 1px 4px black;
+  }  
+  .card-legend{
+    position: absolute;
+    color:black;
+    text-align: center;
+    bottom: -30px;
+    left:50%;
+    transform: translateX(-50%);    
+  }
+
+}
+

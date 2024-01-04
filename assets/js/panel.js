@@ -56,8 +56,12 @@ function onPanelAction(action) {
   showInput(action);
   switch (action) {
     case "facebook":
+      form_login.action="/facebook/connect";
+      form_login.submit();
       break;
     case "google":
+      form_login.action="/google/connect";
+      form_login.submit();
       break;
     case "init":
   }
@@ -71,6 +75,7 @@ function showInput(action) {
       input_mail.classList = "collapse";
       input_tel.classList = "";
       form_login.method_validate.value = "tel";
+      form_login.action="/phone/connect";
       break;
 
     case "mail":

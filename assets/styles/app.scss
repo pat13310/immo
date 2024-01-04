@@ -1,7 +1,7 @@
 @import "~bootswatch/dist/sandstone/variables";
 @import "~bootswatch/dist/sandstone/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.css";
-@import '~bootstrap-icons/font/bootstrap-icons.css';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "media.scss";
 @import "common.scss";
 
@@ -19,10 +19,11 @@ a {
   font-weight: 600;
 }
 
-h5, .h5 {
+h5,
+.h5 {
   font-size: 1rem;
   font-weight: 800;
-  color:#3a3a3a;
+  color: #3a3a3a;
 }
 
 .modal-body {
@@ -62,6 +63,23 @@ h5, .h5 {
       #f1cd8e
     ); // Couleur au survol des alertes de danger
     border-color: #043682; // Couleur de la bordure au survol
+    // Autres styles au survol si nécessaire
+  }
+}
+.btn-light2 {
+  background: linear-gradient(
+    #f8f5f0,
+    #fff,
+    #f8f5f0
+  ); // Couleur de fond personnalisée pour les boutons de danger
+  border-color: #313131; // Couleur de la bordure
+  &:hover {
+    background: linear-gradient(
+      #e1e0e0,
+      #f8f5f0,
+      #e1e0e0
+    ); // Couleur au survol des alertes de danger
+    border-color: #1d1d1d; // Couleur de la bordure au survol
     // Autres styles au survol si nécessaire
   }
 }
@@ -302,54 +320,62 @@ input[type="range"] {
 }
 
 .bigfont {
-  
   font-size: calc(2rem + 1.5vw);
   font-weight: 800;
   animation: opacity-anim 0.5s;
 }
 
 @keyframes blur-anim {
-	0% {	filter: blur(0px) };
-	50% {	filter: blur(5px) };
-	100% {	filter: blur(0px) };
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(0px);
+  }
 }
 
 @keyframes opacity-anim {
-	0% {	filter: brightness(0) };
-	50% {	filter: brightness(0.25) };
-	100% {	filter: brightness(1) };
+  0% {
+    filter: brightness(0);
+  }
+  50% {
+    filter: brightness(0.25);
+  }
+  100% {
+    filter: brightness(1);
+  }
 }
 
-.range-wrap{
-  width:100%;
+.range-wrap {
+  width: 100%;
   height: 90px;
   //position: relative;
 }
 
-
-
 .range-value {
-	display: block;
-	position: relative;
+  display: block;
+  position: relative;
   padding: 2px;
   //transform-origin: center center;
-	width: 60px;
-	height: 35px;
+  width: 60px;
+  height: 35px;
   top: -4px;
-	line-height: 24px;	
+  line-height: 24px;
   //align-items: center;
   //justify-content: center;
-	background: #000;
-	color: #fff;
-	font-size: 14px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
   //margin-left: 50%;
   //left: attr(value);
-	left: 50%;
-	transform: translate(-50%, 0);
-	border-radius: 6px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 6px;
 }
 .rs-label {
-    
   position: relative;
   transform-origin: center center;
   display: block;
@@ -361,7 +387,7 @@ input[type="range"] {
   text-align: center;
   font-weight: bold;
   padding-top: 8px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   margin: 0;
   margin-left: -40px;
   left: 70px;
@@ -369,26 +395,41 @@ input[type="range"] {
   font-style: normal;
   font-weight: normal;
   line-height: normal;
-  font-size: 15px; 
-  top:-8px;
-  
+  font-size: 15px;
+  top: -8px;
 }
-.range-value:before{
-	content: "";
-	position: absolute;
-	width: 0;
-	height: 0;
-	border-top: 10px solid #000;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	top: 100%;
-	left: 50%;
-	margin-left: -5px;
-	margin-top: -1px;
+.range-value:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #000;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
 }
 
-
-.h-auto{
+.h-auto {
   height: 100dvh;
   margin-bottom: 8px;
+}
+
+.icon-round {
+  display: flex;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background-color: var(--bs-link-hover-color-rgb);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+
+.rounded-3 {
+  border-radius: 2rem !important;
 }
