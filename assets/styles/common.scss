@@ -485,14 +485,17 @@ a {
   &:hover{
     border: 1px solid black;
     box-shadow: 1px 1px 4px black;
-  }  
+  }
+    
   .card-legend{
+    width: 100%;
     position: absolute;
     color:black;
     text-align: center;
-    bottom: -30px;
+    top: 102%;
     left:50%;
-    transform: translateX(-50%);    
+    transform: translateX(-50%);
+    font-size: 18px;    
   }
 
 }
