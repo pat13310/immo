@@ -206,3 +206,31 @@ function togglePasswordVisibility(elem) {
     elem.innerHTML = "<i class='bi bi-eye'></i>";
   }
 }
+
+
+function loadImages(tag="img.loader-image[loading='lazy']"){
+  var lazyImages = [].slice.call(document.querySelectorAll(tag));
+
+    lazyImages.forEach(function(lazyImage) {
+      // Remplacez le chemin avec le chemin réel de votre image
+      lazyImage.src = "loading.gif";
+
+      // Chargement de l'image réelle lorsque la page est complètement chargée
+      lazyImage.addEventListener("load", function() {
+        lazyImage.style.visibility = "visible";
+        lazyImage.style.opacity = "1";
+      });
+    });
+}
+
+function generateImages(json="build/data/card-help.json", tag=".grid-3-3"){
+  const gridLayout= document.querySelector(tag);
+  fetch(jsonPath)
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(function(imageData) {
+          })
+        .catch(error => console.error("Une erreur s'est produite :", error));
+        })
+
+}

@@ -175,8 +175,17 @@ h5,
 }
 
 .bold {
-  font-weight: 800;
+  font-weight: 800!important;
 }
+
+.normal {
+  font-weight: 500!important;
+}
+
+.thin {
+  font-weight: 300!important;
+}
+
 
 .btn-dark {
   --bs-btn-color: #fff;

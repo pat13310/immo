@@ -461,31 +461,30 @@ body {
 
 
 .f-xs {
-  font-size: 0.75em;
+  font-size: 0.75em!important;
 }
 .f-sm{
-  font-size: 0.8em;
+  font-size: 0.8em!important;
 }
 
 .f-md {
-  font-size: 1em;
+  font-size: 0.96em!important;
 }
 
 .f-lg {
-  font-size: 1.15em;
+  font-size: 1.15em!important;
 }
 
 .f-md2 {
-  font-size: 1.05em;
+  font-size: 1.05em!important;
 }
 
-
 .f-xl {
-  font-size: 1.5em;
+  font-size: 1.5em!important;
 }
 
 .f-xxl {
-  font-size: 1.75em;
+  font-size: 1.75em!important;
 }
 
 .card-info {

@@ -1,0 +1,22 @@
+[
+    {
+        "src": "../images/help/step.webp",
+        "legend": "Premiers pas sur Immo",
+        "alt": "Premiers pas sur Immo"
+    },
+    {
+        "src":  "../images/help/home.webp",
+        "legend": "Accéder à votre compte et le gérer",
+        "alt": "Accéder à votre compte et le gérer"
+    },
+    {
+        "src":  "../images/help/help_girl.webp",
+        "legend": "Aide concernant une réservation",
+        "alt": "Aide concernant une réservation"
+    },
+    {
+        "src":  "../images/help/expressimmo.webp",
+        "legend": "Express Immo pour les urgences",
+        "indicatif":"Express Immo pour les urgences"
+    }
+]
