@@ -197,7 +197,7 @@ function animerCompteur(cible = 9999, tag = "compteur-chiffre", delay = 2000) {
 }
 
 function togglePasswordVisibility(elem) {
-  let el=elem.parentElement.children[0];
+  let el = elem.parentElement.children[0];
   if (el.type === "password") {
     el.type = "text";
     elem.innerHTML = "<i class='bi bi-eye-slash'></i>";
@@ -207,30 +207,65 @@ function togglePasswordVisibility(elem) {
   }
 }
 
-
-function loadImages(tag="img.loader-image[loading='lazy']"){
+function loadImages(tag = "img.loader-image[loading='lazy']") {
   var lazyImages = [].slice.call(document.querySelectorAll(tag));
 
-    lazyImages.forEach(function(lazyImage) {
-      // Remplacez le chemin avec le chemin réel de votre image
-      lazyImage.src = "loading.gif";
+  lazyImages.forEach(function (lazyImage) {
+    // Remplacez le chemin avec le chemin réel de votre image
+    lazyImage.src = "loading.gif";
 
-      // Chargement de l'image réelle lorsque la page est complètement chargée
-      lazyImage.addEventListener("load", function() {
-        lazyImage.style.visibility = "visible";
-        lazyImage.style.opacity = "1";
-      });
+    // Chargement de l'image réelle lorsque la page est complètement chargée
+    lazyImage.addEventListener("load", function () {
+      lazyImage.style.visibility = "visible";
+      lazyImage.style.opacity = "1";
+    });
+  });
+}
+
+function generateImages(json = "build/data/card-help.json", tag = ".grid-3-3") {
+  const gridLayout = document.querySelector(tag);
+  fetch(jsonPath)
+    .then((response) => response.json())
+    .then((data) => {
+      data
+        .forEach(function (imageData) {})
+        .catch((error) => console.error("Une erreur s'est produite :", error));
     });
 }
 
-function generateImages(json="build/data/card-help.json", tag=".grid-3-3"){
-  const gridLayout= document.querySelector(tag);
-  fetch(jsonPath)
-        .then(response => response.json())
-        .then(data => {
-          data.forEach(function(imageData) {
-          })
-        .catch(error => console.error("Une erreur s'est produite :", error));
-        })
+function loadImageSrc(newSrc, container, rounded = true, dim = "98.5%") {
+  // Afficher l'image de chargement
+  const loadingImage = new Image();
+  loadingImage.src = "../build/images/loading.gif";
+  loadingImage.style.width = "50px";
+  loadingImage.style.height = "50px";
+  //loadingImage.style="width:50px;height:50px;"
+  container.appendChild(loadingImage);
 
+  // Créer une nouvelle image principale
+  const mainImage = new Image();
+  mainImage.style.width = dim;
+  mainImage.style.height = dim;
+  mainImage.classList = "rounded-top";
+
+  if (rounded==true) {
+    mainImage.classList = "rounded-2";
+  }
+
+  mainImage.onload = function () {
+    // Supprimer l'image de chargement après le changement du src de l'image principale
+    container.removeChild(loadingImage);
+    // Afficher la nouvelle image principale
+    container.appendChild(mainImage);
+  };
+
+  mainImage.onerror = function (error) {
+    //mainImage.src = "error-icon.png";
+    loadingImage.src = "../images/error-icon.png";
+    //console.error(`Erreur lors du changement du src de l'image : ${error.message}`);
+    // Gérer l'erreur ici si nécessaire (par exemple, afficher un message d'erreur).
+  };
+
+  // Changer le src de l'image principale
+  mainImage.src = newSrc;
 }
